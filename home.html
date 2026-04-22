@@ -40,6 +40,11 @@
       .content {
         height: 100vh;
         overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #b6b5b5f7 transparent;
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+        scroll-padding-top: 1rem;
       }
 
       .goal {
@@ -94,23 +99,30 @@
         gap: 1rem;
 
         & > li {
-          padding: 0.5rem 1rem;
-          text-align: center;
+          padding: 0.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
           font-size: 1rem;
           font-weight: bold;
           background: rgb(151, 151, 186);
-          border-radius: 0.5rem;
+          border-radius: 1rem;
+
+          & > div.icon {
+            width: 2rem;
+          }
         }
       }
 
       .goals-container {
-        background: rgb(94, 94, 94);
         width: 100%;
         padding: 0.5rem;
         border-radius: 1.5rem;
+        scroll-snap-align: start;
+
         & > h3 {
           text-align: center;
-          color: white;
+          color: rgb(41, 41, 41);
         }
 
         & > ul {
@@ -122,7 +134,7 @@
             display: flex;
             gap: 0.5rem;
             align-items: center;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
 
             & > div.icon {
               width: 2.5rem;
@@ -137,9 +149,38 @@
         padding: 1rem;
         min-width: 40rem;
         max-width: 44rem;
+        position: relative;
         gap: 1rem;
         background: #456;
         border-radius: 2rem;
+        scroll-snap-align: start;
+
+        &:first-child {
+          scroll-padding-top: 4rem;
+        }
+
+        & > span {
+          position: absolute;
+          background: #868686;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          top: 0.5rem;
+          right: 0.5rem;
+          width: 2.5rem;
+          border-radius: 50%;
+          aspect-ratio: 1/1;
+          transition: all 0.5s;
+          cursor: pointer;
+
+          & > svg {
+            color: #353535;
+          }
+
+          &:hover {
+            background: green;
+          }
+        }
       }
 
       .event-img {
@@ -164,7 +205,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 2rem;
+        gap: 1rem;
         padding: 1rem;
       }
 
@@ -208,11 +249,57 @@
           padding-top: 0.5rem;
         }
       }
+
+      .event-filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        scroll-snap-align: start;
+        padding: 1rem;
+
+        & > div.radio-filter {
+          display: flex;
+          font-weight: 500;
+          font-size: 1rem;
+          background: rgb(126, 2, 192);
+          border-radius: 1rem;
+          box-shadow: inset #620693 0px 0px 2px 1px;
+          padding: 0.25rem;
+          color: white;
+
+          & > input {
+            display: none;
+          }
+
+          & > input:checked + label {
+            background: #2e1;
+            color: black;
+          }
+
+          & > label {
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+
+            &:hover {
+              background: rgba(119, 136, 153, 0.196);
+              color: rgb(183, 182, 182);
+            }
+          }
+        }
+
+        & > span {
+          display: flex;
+          gap: 1rem;
+
+          & > div.icon {
+            cursor: pointer;
+          }
+        }
+      }
     </style>
   </head>
   <body>
-    <sidebar
-      ><h2>Sidebar</h2>
+    <sidebar>
       <div class="user-info">
         <div class="info">
           <div class="icon"></div>
@@ -222,9 +309,18 @@
       </div>
       <div>
         <ul class="items-sidebar">
-          <li>Home</li>
-          <li>Schedule</li>
-          <li>Milstones</li>
+          <li>
+            <div class="icon"></div>
+            Home
+          </li>
+          <li>
+            <div class="icon"></div>
+            Schedule
+          </li>
+          <li>
+            <div class="icon"></div>
+            Milstones
+          </li>
         </ul>
       </div>
     </sidebar>
@@ -376,14 +472,38 @@
       </section>
       <section class="content event">
         <div class="event-filter">
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div>Filter by</div>
+          <div class="radio-filter">
+            <input name="status" id="a" type="radio" />
+            <label for="a">All</label>
+            <input name="status" id="c" type="radio" />
+            <label for="c">Complete</label>
+
+            <input name="status" id="w" type="radio" />
+            <label for="w">Warning</label>
+          </div>
+          <span class="game-filter">
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+          </span>
         </div>
         <div class="event-list">
           <article class="event-container">
+            <span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20.707 6.293a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 1.414 -1.414l4.293 4.293l9.293 -9.293a1 1 0 0 1 1.414 0"
+                />
+              </svg>
+            </span>
             <div class="event-img">
               <img
                 src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
@@ -406,12 +526,24 @@
                   Laborum nihil facilis modi. Accusantium error excepturi
                   doloremque
                 </p>
-                <a href="">Mas informacion</a>
               </section>
-              <footer>✔️</footer>
+              <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
           <article class="event-container">
+            <span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20.707 6.293a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 1.414 -1.414l4.293 4.293l9.293 -9.293a1 1 0 0 1 1.414 0"
+                />
+              </svg>
+            </span>
             <div class="event-img">
               <img
                 src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
@@ -434,12 +566,24 @@
                   Laborum nihil facilis modi. Accusantium error excepturi
                   doloremque
                 </p>
-                <a href="">Mas informacion</a>
               </section>
-              <footer>✔️</footer>
+              <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
           <article class="event-container">
+            <span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20.707 6.293a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 1.414 -1.414l4.293 4.293l9.293 -9.293a1 1 0 0 1 1.414 0"
+                />
+              </svg>
+            </span>
             <div class="event-img">
               <img
                 src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
@@ -463,10 +607,23 @@
                   doloremque
                 </p>
               </section>
-              <footer> <a href="">Mas informacion</a><div>✔️</div></footer>
+              <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
           <article class="event-container">
+            <span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20.707 6.293a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 1.414 -1.414l4.293 4.293l9.293 -9.293a1 1 0 0 1 1.414 0"
+                />
+              </svg>
+            </span>
             <div class="event-img">
               <img
                 src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
@@ -489,261 +646,8 @@
                   Laborum nihil facilis modi. Accusantium error excepturi
                   doloremque
                 </p>
-                <a href="">Mas informacion</a>
               </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
-            </div>
-          </article>
-          <article class="event-container">
-            <div class="event-img">
-              <img
-                src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                alt=""
-              />
-              <div class="icon"></div>
-            </div>
-            <div class="event-info">
-              <header>01/04 - 18/04 - 17 Days Remaing</header>
-              <section class="event-data">
-                <h3>Event 01 02 03</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  commodi quaerat dolores rerum, aliquid consequuntur libero
-                  harum odit atque asperiores quis vel voluptatum fuga molestiae
-                  magnam qui facere voluptatibus quidem!
-                </p>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum nihil facilis modi. Accusantium error excepturi
-                  doloremque
-                </p>
-                <a href="">Mas informacion</a>
-              </section>
-              <footer>✔️</footer>
+              <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
         </div>
