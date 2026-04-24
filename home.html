@@ -119,6 +119,7 @@
         padding: 0.5rem;
         border-radius: 1.5rem;
         scroll-snap-align: start;
+        transition: all 0.5s;
 
         & > h3 {
           text-align: center;
@@ -129,12 +130,17 @@
           list-style: none;
           & > li {
             background: lightslategray;
+            height: 3rem;
+            position: relative;
             border-radius: 2rem;
             padding: 0.25rem;
             display: flex;
             gap: 0.5rem;
             align-items: center;
             margin-top: 0.75rem;
+            z-index: 0;
+            overflow: hidden;
+            transition: all 0.5s;
 
             & > div.icon {
               width: 2.5rem;
@@ -142,6 +148,83 @@
             }
           }
         }
+      }
+
+      @keyframes dispose-li {
+        0% {
+          transform: scaleX(0);
+        }
+
+        100% {
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes dispose-li-reverse {
+        0% {
+          background: red;
+          transform: scaleX(1);
+        }
+
+        50%{
+          background: #2e1;
+        }
+
+        100% {
+          transform: scaleX(0);
+        }
+      }
+
+      @keyframes slide-li {
+        0% {
+          transform: translateX(0);
+        }
+
+        25% {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+
+        50% {
+          transform: translateX(50px);
+        }
+
+        75% {
+          opacity: 0;
+          height: 0;
+        }
+
+        100% {
+          transform: translateX(50px);
+          margin: 0;
+          height: 0;
+          padding: 0;
+          opacity: 0;
+        }
+      }
+
+      .animated-dispose-delete {
+        animation: slide-li 1s ease-in forwards 1s;
+      }
+
+      .animated-dispose::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+        height: 100%;
+        border-radius: 2rem;
+        top: 0;
+        left: 0;
+        transform-origin: left;
+        opacity: 0.5;
+        transform: scaleX(0);
+        animation: dispose-li 0.5s ease-in forwards;
+        background: linear-gradient(45deg, #1dff00, #94ff87);
+      }
+
+      .animated-dispose-reverse::before {
+        animation: dispose-li-reverse 0.5s ease-in forwards;
       }
 
       .event-container {
@@ -296,6 +379,22 @@
           }
         }
       }
+
+      .active-game-filter {
+        box-shadow: #2e1 0 0 1px 3px;
+      }
+
+      .completed-event {
+        background: #2e1;
+      }
+
+      .warning-event {
+        filter: opacity(.8);
+      }
+
+      .selected-sidebar {
+      }
+
     </style>
   </head>
   <body>
@@ -337,7 +436,7 @@
               <div class="icon"></div>
               Goal2
             </li>
-            <li>
+            <li data-id="1">
               <div class="icon"></div>
               Goal3
             </li>
@@ -482,7 +581,7 @@
             <label for="w">Warning</label>
           </div>
           <span class="game-filter">
-            <div class="icon"></div>
+            <div class="icon active-game-filter"></div>
             <div class="icon"></div>
             <div class="icon"></div>
             <div class="icon"></div>
@@ -490,7 +589,7 @@
           </span>
         </div>
         <div class="event-list">
-          <article class="event-container">
+          <article class="event-container completed-event">
             <span
               ><svg
                 width="24"
@@ -530,7 +629,7 @@
               <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
-          <article class="event-container">
+          <article class="event-container warning-event">
             <span
               ><svg
                 width="24"
@@ -654,5 +753,26 @@
       </section>
     </main>
   </body>
-  <script type="module"></script>
+  <script type="module">
+    const element = document.querySelector(".goal");
+
+    element.addEventListener("click", (e) => {
+      if (e.target.nodeName != "LI") return;
+
+      e.target.classList.toggle("animated-dispose");
+
+      if (e.target.dataset.id != 1) {
+        e.target.classList.toggle("animated-dispose-delete");
+        return setTimeout(() => e.target.remove(), 2000);
+      }
+
+      setTimeout(() => {
+        e.target.classList.add("animated-dispose-reverse");
+      }, 1000);
+
+      setTimeout(() => {
+        e.target.classList.remove("animated-dispose-reverse","animated-dispose");
+      }, 2000);
+    });
+  </script>
 </html>
