@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      :root {
+        --gradient-color-1-percent: 0%;
+        --gradient-color-2-percent: 0%;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -166,7 +171,7 @@
           transform: scaleX(1);
         }
 
-        50%{
+        50% {
           background: #2e1;
         }
 
@@ -204,7 +209,7 @@
       }
 
       .animated-dispose-delete {
-        animation: slide-li 1s ease-in forwards 1s;
+        animation: slide-li 0.7s ease-in infinite  1s;
       }
 
       .animated-dispose::before {
@@ -219,7 +224,7 @@
         transform-origin: left;
         opacity: 0.5;
         transform: scaleX(0);
-        animation: dispose-li 0.5s ease-in forwards;
+        animation: dispose-li .5s ease-in infinite alternate;
         background: linear-gradient(45deg, #1dff00, #94ff87);
       }
 
@@ -234,9 +239,12 @@
         max-width: 44rem;
         position: relative;
         gap: 1rem;
-        background: #456;
         border-radius: 2rem;
         scroll-snap-align: start;
+        transition: all;
+        background: linear-gradient(to right, #19a50d 40%, #456 60%);
+        background-size: 300% 100%;
+        animation: barridoInfinito 3s ease-in infinite alternate;
 
         &:first-child {
           scroll-padding-top: 4rem;
@@ -263,6 +271,15 @@
           &:hover {
             background: green;
           }
+        }
+      }
+
+      @keyframes barridoInfinito {
+        from {
+          background-position: right bottom;
+        }
+        to {
+          background-position: left bottom;
         }
       }
 
@@ -389,12 +406,11 @@
       }
 
       .warning-event {
-        filter: opacity(.8);
+        filter: opacity(0.8);
       }
 
       .selected-sidebar {
       }
-
     </style>
   </head>
   <body>
@@ -428,7 +444,7 @@
         <div class="goals-container">
           <h3>Daylies</h3>
           <ul>
-            <li>
+            <li class="animated-dispose animated-dispose-delete">
               <div class="icon"></div>
               Goal1
             </li>
@@ -771,7 +787,10 @@
       }, 1000);
 
       setTimeout(() => {
-        e.target.classList.remove("animated-dispose-reverse","animated-dispose");
+        e.target.classList.remove(
+          "animated-dispose-reverse",
+          "animated-dispose",
+        );
       }, 2000);
     });
   </script>
