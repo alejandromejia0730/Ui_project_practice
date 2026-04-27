@@ -209,7 +209,7 @@
       }
 
       .animated-dispose-delete {
-        animation: slide-li 0.7s ease-in infinite  1s;
+        animation: slide-li 0.7s ease-in 1s;
       }
 
       .animated-dispose::before {
@@ -224,7 +224,7 @@
         transform-origin: left;
         opacity: 0.5;
         transform: scaleX(0);
-        animation: dispose-li .5s ease-in infinite alternate;
+        animation: dispose-li 0.5s ease-in forwards;
         background: linear-gradient(45deg, #1dff00, #94ff87);
       }
 
@@ -241,10 +241,8 @@
         gap: 1rem;
         border-radius: 2rem;
         scroll-snap-align: start;
+        background: #456;
         transition: all;
-        background: linear-gradient(to right, #19a50d 40%, #456 60%);
-        background-size: 300% 100%;
-        animation: barridoInfinito 3s ease-in infinite alternate;
 
         &:first-child {
           scroll-padding-top: 4rem;
@@ -277,10 +275,35 @@
       @keyframes barridoInfinito {
         from {
           background-position: right bottom;
+          filter: opacity(1);
         }
         to {
           background-position: left bottom;
+          filter: opacity(0.7);
         }
+      }
+
+      @keyframes barridoInfinito-reverse {
+        from {
+          background-position: left bottom;
+          filter: opacity(0.7);
+        }
+        to {
+          background-position: right bottom;
+          filter: opacity(1);
+        }
+      }
+
+      .animated-completed-event {
+        background: linear-gradient(to right, #19a50d 40%, #456 60%);
+        background-size: 250% 100%;
+        animation: barridoInfinito 2s ease-in forwards;
+      }
+
+      .animated-completed-event-reverse {
+        background: linear-gradient(to right, #19a50d 40%, #456 60%);
+        background-size: 250% 100%;
+        animation: barridoInfinito-reverse 2s ease-in forwards;
       }
 
       .event-img {
@@ -403,10 +426,18 @@
 
       .completed-event {
         background: #19a50d !important;
+        filter: opacity(0.7);
       }
 
       .warning-event {
-        filter: opacity(0.8);
+        filter: opacity(0.7);
+      }
+
+      span.success-icon {
+        background: #126d0a;
+        & > svg  {
+          color: #ffb;
+        }
       }
 
       .selected-sidebar {
@@ -685,7 +716,7 @@
               <footer><a href="">Mas informacion</a></footer>
             </div>
           </article>
-          <article class="event-container">
+          <article class="event-container animated-completed-event">
             <span
               ><svg
                 width="24"
@@ -771,6 +802,7 @@
   </body>
   <script type="module">
     const element = document.querySelector(".goal");
+    const events = document.querySelector(".event-list");
 
     element.addEventListener("click", (e) => {
       if (e.target.nodeName != "LI") return;
@@ -792,6 +824,27 @@
           "animated-dispose",
         );
       }, 2000);
+    });
+
+    events.addEventListener("click", (e) => {
+      let target = e.target?.closest("span");
+      let parent = target?.closest("article");
+
+      console.log(target, parent);
+
+      if (target?.nodeName !== "SPAN") return;
+
+      target.classList.add("success-icon");
+      parent.classList.add("animated-completed-event");
+
+      setTimeout(() => {
+        parent.classList.add("animated-completed-event-reverse");
+        target.classList.remove("success-icon");
+      }, 3000);
+
+      setTimeout(() => {
+        parent.classList.remove("animated-completed-event-reverse","animated-completed-event");
+      }, 6000);
     });
   </script>
 </html>
