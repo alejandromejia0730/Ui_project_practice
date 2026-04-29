@@ -6,8 +6,24 @@
     <title>Document</title>
     <style>
       :root {
-        --gradient-color-1-percent: 0%;
-        --gradient-color-2-percent: 0%;
+        --color-bg: oklch(0.1139 0.0665 285.12deg);
+        --color-surface-1: oklch(0.1539 0.0665 285.12deg);
+        --color-surface-2: oklch(0.2039 0.0665 285.12deg);
+        --color-surface-3: oklch(0.3039 0.0665 285.12deg);
+        --color-surface-3-hover: oklch(0.4039 0.0665 285.12deg);
+        --color-surface-3-success : oklch(0.5053 0.1039 142.50deg);
+
+        --color-success:  oklch(0.5053 0.1039 142.50deg);
+       
+        --color-foreground: oklch(0.9539 0.0665 285.12deg);
+        --color-foreground-accent: oklch(0.7039 0.0665 285.12deg);
+        --color-foreground-hover: oklch(0.8039 0.0665 285.12deg);
+
+        --color-foreground-secundary:oklch(0.63 0.07 316.75 / 1);
+        --color-foreground-secundary-accent:oklch(0.93 0.07 316.75 / 1);
+        --color-foreground-secundary-hover: oklch(0.83 0.07 316.75 / 1);
+
+
       }
 
       * {
@@ -21,7 +37,7 @@
         display: flex;
         height: 100vh;
         overflow-y: hidden;
-        background: #ffb;
+        background: var(--color-bg);
       }
 
       main {
@@ -37,13 +53,14 @@
         height: 100vh;
         overflow-y: hidden;
         width: 20rem;
-        background: #456;
+        background: var(--color-surface-1);
         padding: 1rem;
         flex: 0 0 auto;
       }
 
       .content {
         height: 100vh;
+        background: var(--color-surface-2);
         overflow-y: auto;
         scrollbar-width: thin;
         scrollbar-color: #b6b5b5f7 transparent;
@@ -53,7 +70,6 @@
       }
 
       .goal {
-        background: rgb(223, 223, 223);
         width: 24rem;
         display: flex;
         flex-direction: column;
@@ -64,7 +80,6 @@
       }
 
       .event {
-        background: rgb(126, 2, 192);
         max-width: 120rem;
         padding: 1rem;
         flex: 1 1 auto;
@@ -110,8 +125,13 @@
           gap: 0.5rem;
           font-size: 1rem;
           font-weight: bold;
-          background: rgb(151, 151, 186);
+          background: var(--color-surface-3);
+          color: var(--color-foreground);
           border-radius: 1rem;
+
+          &:hover {
+            background: var(--color-surface-3-hover);
+          }
 
           & > div.icon {
             width: 2rem;
@@ -128,13 +148,14 @@
 
         & > h3 {
           text-align: center;
-          color: rgb(41, 41, 41);
+          color: var(--color-foreground);
         }
 
         & > ul {
           list-style: none;
           & > li {
-            background: lightslategray;
+            background: var(--color-surface-3);
+            color: var(--color-foreground);
             height: 3rem;
             position: relative;
             border-radius: 2rem;
@@ -150,6 +171,10 @@
             & > div.icon {
               width: 2.5rem;
               height: 2.5rem;
+            }
+
+            &:hover {
+              background: var(--color-surface-3-hover);
             }
           }
         }
@@ -172,7 +197,7 @@
         }
 
         50% {
-          background: #2e1;
+          background: var(--color-success);
         }
 
         100% {
@@ -222,10 +247,9 @@
         top: 0;
         left: 0;
         transform-origin: left;
-        opacity: 0.5;
         transform: scaleX(0);
         animation: dispose-li 0.5s ease-in forwards;
-        background: linear-gradient(45deg, #1dff00, #94ff87);
+        background: linear-gradient(90deg, var(--color-success) 70%, var(--color-surface-3));
       }
 
       .animated-dispose-reverse::before {
@@ -241,7 +265,7 @@
         gap: 1rem;
         border-radius: 2rem;
         scroll-snap-align: start;
-        background: #456;
+        background: var(--color-surface-3);
         transition: all;
 
         &:first-child {
@@ -267,7 +291,7 @@
           }
 
           &:hover {
-            background: green;
+            background: var(--color-success);
           }
         }
       }
@@ -295,13 +319,13 @@
       }
 
       .animated-completed-event {
-        background: linear-gradient(to right, #19a50d 40%, #456 60%);
+        background: linear-gradient(to right, var(--color-surface-3-success) 40%, var(--color-surface-3) 60%);
         background-size: 250% 100%;
         animation: barridoInfinito 2s ease-in forwards;
       }
 
       .animated-completed-event-reverse {
-        background: linear-gradient(to right, #19a50d 40%, #456 60%);
+        background: linear-gradient(to right, var(--color-surface-3-success) 40%, var(--color-surface-3-success) 60%);
         background-size: 250% 100%;
         animation: barridoInfinito-reverse 2s ease-in forwards;
       }
@@ -341,7 +365,7 @@
         & > header {
           flex: 0 0 auto;
           font-weight: 700;
-          color: rgb(41, 41, 41);
+          color: var(--color-foreground-secundary);
         }
         & > footer {
           & > div {
@@ -357,20 +381,35 @@
 
           & > a {
             padding-top: 0.5rem;
+            color: var(--color-foreground-accent);
           }
         }
       }
 
       .event-data {
         flex: 1 0 0;
-
+        color: var(--color-foreground);
         & > p {
           display: -webkit-box;
+          color: var(--color-foreground);
+          opacity: .9;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2; /* Cantidad de líneas a mostrar */
           overflow: hidden;
           padding-top: 0.5rem;
         }
+      }
+
+      .slider {
+        width: 3.1rem;
+        height: calc(100% - 0.5rem);
+        position: absolute;
+        top: 0.25rem;
+        left: 0.25rem;
+        background: #1d0d3342;
+        border-radius: 0.75rem;
+        transition: all 0.5s ease;
+        z-index: 1;
       }
 
       .event-filter {
@@ -389,23 +428,30 @@
           box-shadow: inset #620693 0px 0px 2px 1px;
           padding: 0.25rem;
           color: white;
+          position: relative;
+          z-index: 0;
 
           & > input {
             display: none;
           }
 
-          & > input:checked + label {
-            background: #2e1;
-            color: black;
+          & > input:nth-child(3):checked ~ .slider {
+            transform: translateX(51%);
+            width: 6.2rem;
+          }
+
+          & > input:nth-child(5):checked ~ .slider {
+            transform: translateX(168%);
+            width: 5.6rem;
           }
 
           & > label {
             padding: 0.5rem 1rem;
             border-radius: 0.75rem;
+            z-index: 2;
 
             &:hover {
-              background: rgba(119, 136, 153, 0.196);
-              color: rgb(183, 182, 182);
+              color: var(--color-foreground-hover);
             }
           }
         }
@@ -423,25 +469,25 @@
         }
       }
 
-      .active-game-filter::after {
+      .game-filter-icon::after {
         content: "";
         position: absolute;
         z-index: -1;
         display: block;
-        border-radius:inherit;
+        border-radius: inherit;
         width: 100%;
         height: 100%;
-        box-shadow: #2e1 0 0 2px 3px;
+        box-shadow: #9a6bda 0 0 1px 4px;
         opacity: 0;
-        transition: opacity .7s;
+        transition: opacity 0.7s;
       }
 
-      .active-game-filter:hover::after {
+      .active::after {
         opacity: 1;
       }
 
       .completed-event {
-        background: #19a50d !important;
+        background: var(--color-surface-3-success) !important;
         filter: opacity(0.7);
       }
 
@@ -451,12 +497,9 @@
 
       span.success-icon {
         background: #126d0a;
-        & > svg  {
+        & > svg {
           color: #ffb;
         }
-      }
-
-      .selected-sidebar {
       }
     </style>
   </head>
@@ -639,16 +682,16 @@
             <label for="a">All</label>
             <input name="status" id="c" type="radio" />
             <label for="c">Complete</label>
-
             <input name="status" id="w" type="radio" />
             <label for="w">Warning</label>
+            <div class="slider"></div>
           </div>
-          <span class="game-filter">
-            <div class="icon active-game-filter"></div>
-            <div class="icon"></div>
-            <div class="icon"></div>
-            <div class="icon"></div>
-            <div class="icon"></div>
+          <span id="game-filter" class="game-filter">
+            <div clss="icon game-filter-icon"></div>
+            <div class="icon game-filter-icon"></div>
+            <div class="icon game-filter-icon"></div>
+            <div class="icon game-filter-icon"></div>
+            <div class="icon game-filter-icon"></div>
           </span>
         </div>
         <div class="event-list">
@@ -819,6 +862,7 @@
   <script type="module">
     const element = document.querySelector(".goal");
     const events = document.querySelector(".event-list");
+    const game_filter = document.querySelector("#game-filter");
 
     element.addEventListener("click", (e) => {
       if (e.target.nodeName != "LI") return;
@@ -859,8 +903,20 @@
       }, 3000);
 
       setTimeout(() => {
-        parent.classList.remove("animated-completed-event-reverse","animated-completed-event");
+        parent.classList.remove(
+          "animated-completed-event-reverse",
+          "animated-completed-event",
+        );
       }, 6000);
+    });
+
+    let last_game_filtered;
+
+    game_filter.addEventListener("click", (e) => {
+      if (e.target.nodeName !== "DIV") return;
+      last_game_filtered?.classList.remove("active");
+      e.target.classList.add("active");
+      last_game_filtered = e.target;
     });
   </script>
 </html>
