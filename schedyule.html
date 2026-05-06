@@ -212,7 +212,6 @@
         flex-direction: column;
 
         & header {
-          top: 5.5rem;
           text-align: center;
           background: var(--color-surface-3);
           z-index: 3;
@@ -221,11 +220,15 @@
           align-items: center;
           border-radius: 1.25rem;
           gap: 1rem;
+
+          & > .icon {
+            width: 2rem;
+            aspect-ratio: 1 / 1;
+          }
         }
 
         & section {
           text-align: center;
-          top: 6.7rem;
           z-index: 1;
           flex: 2 0 0;
           max-height: 2rem;
@@ -236,7 +239,6 @@
           text-align: center;
           color: var(--color-foreground-secundary);
           background: var(--color-surface-3);
-          top: 15rem;
           z-index: 2;
         }
       }
@@ -334,7 +336,7 @@
         </div>
         <div style="grid-column: 2; grid-row: 3 / span 2" class="item-work">
           <article>
-            <header>Eventos ZZZ</header>
+            <header><div class="icon"></div>Eventos ZZZ</header>
             <section>Event GAme 1234455566777888</section>
             <footer>Day Remaining</footer>
           </article>
