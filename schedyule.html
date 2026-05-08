@@ -190,7 +190,7 @@
         width: calc(100% - 1rem);
         height: calc(100% - 1rem);
         place-self: center;
-        background: color-mix(var(--color-surface-3),transparent);
+        background: color-mix(var(--color-surface-3), transparent);
         color: var(--color-foreground);
         padding: 0.25rem;
         border-radius: 1.25rem;
@@ -209,6 +209,15 @@
         top: 5rem;
         display: flex;
         flex-direction: column;
+
+        & small {
+          position: absolute;
+          bottom: 0.2rem;
+          right: 0.5rem;
+          z-index: 4;
+          font-size: 0.75rem;
+          color: color-mix(var(--color-foreground-secundary), transparent);
+        }
 
         & header {
           text-align: center;
@@ -240,11 +249,10 @@
         }
 
         & footer {
-          text-align: center;
           color: var(--color-foreground-secundary);
           background: var(--color-surface-3);
           border-radius: 0 0 1rem 1rem;
-          padding: 0.5rem 1rem;
+          padding: 0.5rem;
           font-size: small;
           z-index: 2;
         }
@@ -265,7 +273,7 @@
             transparent 1px
           );
         background-size: calc(100% / var(--number-columns))
-          calc(3 * var(--cell-row));
+          calc(var(--cell-row));
         border-right: 1px solid var(--color-surface-2);
         pointer-events: none;
       }
@@ -295,8 +303,10 @@
             </a>
           </li>
           <li>
-            <div class="icon"></div>
-            Milstones
+            <a href="/milistone.html">
+              <div class="icon"></div>
+              Milstones
+            </a>
           </li>
         </ul>
       </div>
@@ -337,6 +347,7 @@
           <div class="cells-background"></div>
           <div style="grid-column: 2; grid-row: 2 / span 1" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header class="one-cell">
                 <div class="icon"></div>
                 Daily Task
@@ -345,6 +356,7 @@
           </div>
           <div style="grid-column: 2; grid-row: 3 / span 2" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task 1
@@ -355,6 +367,7 @@
           </div>
           <div style="grid-column: 2; grid-row: 6 / span 5" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task
@@ -365,6 +378,7 @@
           </div>
           <div style="grid-column: 3; grid-row: 2 / span 3" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task 1
@@ -375,6 +389,7 @@
           </div>
           <div style="grid-column: 3; grid-row: 5 / span 6" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task 1
@@ -385,6 +400,7 @@
           </div>
           <div style="grid-column: 3; grid-row: 11 / span 4" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task 1
@@ -395,6 +411,7 @@
           </div>
           <div style="grid-column: 4; grid-row: 2 / span 10" class="item-work">
             <article>
+              <small>3:40 - 4:00</small>
               <header>
                 <div class="icon"></div>
                 Task 1
