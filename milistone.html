@@ -130,7 +130,7 @@
         background: var(--color-surface-2);
         flex: 1 0 20rem;
         border-radius: 1rem;
-        padding: .5rem;
+        padding: 0.5rem;
 
         & > header {
           font-size: 1rem;
@@ -141,9 +141,10 @@
 
       .task {
         background: var(--color-surface-3);
-        padding: .75rem;
-        border-radius: .5rem;
-        box-shadow: color-mix(var(--color-surface-3), transparent) 0px 0px 3px 1px;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        box-shadow: color-mix(var(--color-surface-3), transparent) 0px 0px 3px
+          1px;
         display: flex;
         gap: 1rem;
         flex-direction: column;
@@ -151,7 +152,7 @@
 
       .task-container {
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 5rem);
         overflow-y: auto;
         padding: 0.75rem 1.25rem;
         display: flex;
@@ -169,22 +170,22 @@
       }
 
       .task header {
-        font-size: .75rem;
+        font-size: 0.75rem;
         font-weight: bold;
-        opacity: .85;
+        opacity: 0.85;
         color: var(--color-foreground);
       }
 
       .task footer {
-        padding-top: .75rem;
+        padding-top: 0.75rem;
         border-top: 1px solid var(--color-foreground-secundary);
-        padding-bottom: .25rem;
+        padding-bottom: 0.25rem;
       }
 
       .task footer div {
         width: calc(100% - 2rem);
         height: 6px;
-        transform: scaleX(.5);
+        transform: scaleX(0.5);
         transform-origin: left;
         border-radius: 1rem;
         margin: auto;
@@ -204,7 +205,7 @@
 
         & > label {
           color: var(--color-foreground);
-          font-size: .75rem;
+          font-size: 0.75rem;
           transition: opacity 0.5s;
         }
 
@@ -215,14 +216,13 @@
         }
       }
 
-
       .complete {
         background: var(--color-success);
-        opacity: .7;
+        opacity: 0.7;
       }
     </style>
   </head>
-  
+
   <body>
     <sidebar>
       <div class="user-info">
@@ -299,6 +299,77 @@
                     </li>
                   </ul>
                 </div>
+                <div class="task-group">
+                  <h4>Task Upgrade Item X</h4>
+                  <ul class="task-subtask">
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="22" />
+                      <label for="22">Task Upgrade functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="23" />
+                      <label for="23">Task Review functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="task-group">
+                  <h4>Task Upgrade Item X</h4>
+                  <ul class="task-subtask">
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="22" />
+                      <label for="22">Task Upgrade functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="23" />
+                      <label for="23">Task Review functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                  </ul>
+                </div>
+                <div class="task-group">
+                  <h4>Task Upgrade Item X</h4>
+                  <ul class="task-subtask">
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="22" />
+                      <label for="22">Task Upgrade functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="23" />
+                      <label for="23">Task Review functions</label>
+                    </li>
+                    <li class="task-item">
+                      <input type="checkbox" name="complete" id="24" />
+                      <label for="24">Task Test functions</label>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <footer>
                 <div></div>
@@ -349,7 +420,7 @@
           </div>
         </section>
         <section class="steps">
-              <header><h2>LOADING</h2></header>
+          <header><h2>LOADING</h2></header>
           <div class="task-container">
             <article class="task">
               <header>
@@ -440,7 +511,7 @@
           </div>
         </section>
         <section class="steps">
-              <header><h2>COMPLETED</h2></header>
+          <header><h2>COMPLETED</h2></header>
           <div class="task-container">
             <article class="task complete">
               <header>
