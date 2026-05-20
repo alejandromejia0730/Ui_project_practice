@@ -37,7 +37,6 @@ for t in tittles :
     else :
         more_info = ""   
 
-
     resultados.append({
         'tittle' : tittle,
         'desc' :  desc,
