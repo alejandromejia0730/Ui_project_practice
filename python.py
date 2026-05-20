@@ -17,19 +17,19 @@ for t in tittles :
 
     img = table.select_one('img')
 
-    img_url = img.get("data-src")
+    img_url = img.get("data-src") if img else None
 
-    td = table.select_one('td.center')
-    duration = td.get_text(strip=True).split(' - ')
+    td = table.select_one('td.center') if table else None
+    duration = td.get_text(strip=True).split(' - ') if td else None
 
-    init = datetime.strptime(duration[0], "%B %d, %Y")
-    if duration[1] != "Permanent":
+    init = datetime.strptime(duration[0], "%B %d, %Y") if duration else None
+    if duration and duration[1] != "Permanent":
         finish = datetime.strptime(duration[1], "%B %d, %Y")
     else :
         finish = None
 
     p = t.find_next_sibling('p')
-    desc = p.get_text(strip=True)
+    desc = p.get_text(strip=True) if p else None
 
     a = p.find_next_sibling('p').select_one('a.a-btn')
     if a:
