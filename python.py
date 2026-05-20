@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import json
 
-url = "http://127.0.0.1:5500/Save.html"
-page = rq.get(url)
+url = 'https://game8.co'
+endpoint = "http://127.0.0.1:5500/Save.html"
+page = rq.get(endpoint)
 soup = BeautifulSoup(page.content, 'html.parser')
 tittles = soup.find_all('h4',class_='a-header--4')
 resultados = []
@@ -40,7 +41,7 @@ for t in tittles :
     resultados.append({
         'tittle' : tittle,
         'desc' :  desc,
-        'more_info': more_info,
+        'more_info': url+more_info,
         'init' : str(init.date()),
         'finish' : str(finish.date()) if finish else None,
         'img' : img_url
