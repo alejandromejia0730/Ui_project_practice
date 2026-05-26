@@ -148,6 +148,7 @@
         display: flex;
         gap: 1rem;
         flex-direction: column;
+        position: relative;
       }
 
       .task-container {
@@ -165,6 +166,7 @@
 
       .task-group {
         padding-inline: 0.75rem;
+        margin-bottom: 1rem;
 
         & h4 {
           margin-bottom: 0.5rem;
@@ -188,7 +190,7 @@
       .task footer div {
         width: calc(100% - 2rem);
         height: 6px;
-        transform: scaleX(0.5);
+        transform: scaleX(0);
         transform-origin: left;
         border-radius: 1rem;
         margin: auto;
@@ -197,7 +199,7 @@
 
       .task-subtask {
         list-style: none;
-        padding-inline: 0.5rem;
+        padding-inline: 0.75rem;
       }
 
       .task-item {
@@ -215,12 +217,28 @@
         & > input:checked + label {
           text-decoration: line-through;
           opacity: 0.7;
-          color: var(--color-foreground-secundary);
+          color: var(--color-foreground);
         }
       }
 
       .complete {
         background: var(--color-success);
+        opacity: 0.7;
+      }
+
+      .inLoading::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background: color-mix(var(--color-foreground-secundary), transparent);
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
+      }
+
+      .task-subtask-complete {
         opacity: 0.7;
       }
     </style>
@@ -360,16 +378,8 @@
                   <h4>Task Upgrade Item X</h4>
                   <ul class="task-subtask">
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="22" />
-                      <label for="22">Task Upgrade functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="23" />
-                      <label for="23">Task Review functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="24" />
-                      <label for="24">Task Test functions</label>
+                      <input type="checkbox" name="complete" id="1002" />
+                      <label for="1002">Task Upgrade functions</label>
                     </li>
                   </ul>
                 </div>
@@ -387,16 +397,12 @@
                   <h4>Task Upgrade Item X</h4>
                   <ul class="task-subtask">
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="12" />
-                      <label for="12">Task Upgrade functions</label>
+                      <input type="checkbox" name="complete" id="2203" />
+                      <label for="2203">Task Upgrade functions</label>
                     </li>
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="13" />
-                      <label for="13">Task Review functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="14" />
-                      <label for="14">Task Test functions</label>
+                      <input type="checkbox" name="complete" id="200506" />
+                      <label for="200506">Task Review functions</label>
                     </li>
                   </ul>
                 </div>
@@ -404,16 +410,8 @@
                   <h4>Task Upgrade Item X</h4>
                   <ul class="task-subtask">
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="22" />
-                      <label for="22">Task Upgrade functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="23" />
-                      <label for="23">Task Review functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="24" />
-                      <label for="24">Task Test functions</label>
+                      <input type="checkbox" name="complete" id="94449" />
+                      <label for="94449">Task Upgrade functions</label>
                     </li>
                   </ul>
                 </div>
@@ -425,7 +423,7 @@
         <section class="steps">
           <header><h2>LOADING</h2></header>
           <div class="task-container">
-            <article class="task">
+            <article class="task inLoading">
               <header>
                 <h3>Task Upgrade X Type</h3>
               </header>
@@ -434,16 +432,8 @@
                   <h4>Task Upgrade Item X</h4>
                   <ul class="task-subtask">
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="12" />
-                      <label for="12">Task Upgrade functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="13" />
-                      <label for="13">Task Review functions</label>
-                    </li>
-                    <li class="task-item">
-                      <input type="checkbox" name="complete" id="14" />
-                      <label for="14">Task Test functions</label>
+                      <input type="checkbox" name="complete" id="1234" />
+                      <label for="1234">Task Upgrade functions</label>
                     </li>
                   </ul>
                 </div>
@@ -451,16 +441,16 @@
                   <h4>Task Upgrade Item X</h4>
                   <ul class="task-subtask">
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="22" />
-                      <label for="22">Task Upgrade functions</label>
+                      <input type="checkbox" name="complete" id="334" />
+                      <label for="334">Task Upgrade functions</label>
                     </li>
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="23" />
-                      <label for="23">Task Review functions</label>
+                      <input type="checkbox" name="complete" id="223344" />
+                      <label for="223344">Task Review functions</label>
                     </li>
                     <li class="task-item">
-                      <input type="checkbox" name="complete" id="24" />
-                      <label for="24">Task Test functions</label>
+                      <input type="checkbox" name="complete" id="33421" />
+                      <label for="33421">Task Test functions</label>
                     </li>
                   </ul>
                 </div>
@@ -469,7 +459,7 @@
                 <div></div>
               </footer>
             </article>
-            <article class="task">
+            <article class="task inLoading">
               <header class="task-header">
                 <h3>Task Upgrade X Type</h3>
               </header>
@@ -607,5 +597,39 @@
       </div>
     </main>
   </body>
-  <script type="module"></script>
+  <script type="module">
+    let subtask = document.querySelectorAll(".task-subtask");
+
+    const get = (article) => {
+      let task = Array.from(article.querySelectorAll("li input"));
+      let total_task = task.length;
+      let total_checked = task.filter((a) => a.checked).length;
+      let percent = (total_checked) / total_task;
+      let complete_bar = article.querySelector("footer div");
+      complete_bar.style.transform = `scaleX(${percent})`;
+    };
+
+    subtask.forEach((el) =>
+      el.addEventListener("click", (e) => {
+
+        let art = el.closest("article")
+
+        let inp_li = el.querySelectorAll("li input")
+
+        let header = el.previousElementSibling.classList;
+
+        let flag = Array.from(inp_li).every(
+          (e) => e.checked == true,
+        );
+
+        if (flag) {
+          get(art);
+          return header.add("task-subtask-complete");
+        }
+        
+        header.remove("task-subtask-complete");
+        get(art);
+      })
+    );
+  </script>
 </html>
