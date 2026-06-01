@@ -148,6 +148,9 @@
         gap: 1rem;
         border-radius: 1rem;
         overflow-y: auto;
+        height: 95vh;
+        scrollbar-width: thin;
+        scrollbar-color: #b6b5b5f7 transparent;
       }
 
       .preview-item {
@@ -427,11 +430,10 @@
     const  toggle_deselect_item = (data_id) => {
       if(no_add.includes(data_id))
         return no_add = no_add.filter(i => i != data_id)
-
         no_add.push(data_id)
     }
 
-    function preview(item) {
+    function preview(domfragment ,item) {
       let { tittle, desc, init, finish, img } = item;
 
       let data_id = tittle.replaceAll(/[: ]/g, "_").toLowerCase();
@@ -444,7 +446,7 @@
       clone.querySelector(".img-prev").src = img  
       clone.querySelector(".check-add").addEventListener('change', () => toggle_deselect_item(data_id))
 
-      content_preview.appendChild(clone);
+      domfragment.appendChild(clone);
     }
 
     input_file.addEventListener("change", async function () {
@@ -457,7 +459,11 @@
 
       json_data = Array.from(JSON.parse(data));
 
-      json_data.map((i) => preview(i));
+       const domfragment = document.createDocumentFragment(); // En memoria
+
+      json_data.map((i) => preview(domfragment,i));
+
+       content_preview.appendChild(domfragment);
     });
   
     document.querySelector(".btn-import").addEventListener("click", () => {
