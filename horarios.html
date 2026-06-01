@@ -28,37 +28,40 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0.5rem;
+      padding: 0.75rem;
     }
 
     h1 {
       color: #e25a1c;
       margin-top: 0.5rem;
+      font-size: 3rem;
     }
 
     h2 {
       background: #edb62e;
       color: white;
-      padding: 0rem 0.1rem;
-      font-size: 1rem;
-      width: 22rem;
+      padding: 0rem .5rem;
+      font-size: 1.4rem;
+      border-radius: .2rem;
     }
 
     div {
       margin-top: 0.2rem;
+      width: 100%;
+      max-width: 40rem;
     }
 
     p {
       color: #e25a1c;
-      padding: 0.1rem 0.5rem;
-      font-size: 1rem;
+      padding: 0.1rem 1rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
     .tittle {
       background: transparent;
       color: #e25a1c;
-      font-size: 1.25rem;
+      font-size: 2rem;
       text-align: center;
     }
 
@@ -67,78 +70,142 @@
       font-size: 1rem;
     }
 
+    .content {
+      max-width: 40rem;
+    }
+
+    .group {
+      display: flex;
+      gap: .2rem;
+      flex-wrap: wrap;
+      max-width: 40rem;
+
+      & > div {
+        width: 19.5rem;
+        text-wrap: pretty;
+        flex: 1 0 auto;
+      }
+    }
+
     .train {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 40rem;
 
       & > div {
-        max-width: 12rem;
+        width: 19.5rem;
         text-wrap: pretty;
+        flex: 1 0 auto;
 
         & > h2 {
-          font-size: 0.9rem;
-          width: 11rem;
+          font-size: 1.2rem;
+          width: 100%;
         }
 
         & > p {
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
       }
     }
   </style>
   <body>
-    <h1>HORARIOS <small>/MIE-JUE-VIE</small></h1>
-    <div>
+    <div style="display: none;">
+      <input type="checkbox" id="pa" />
+      <label for="pa">No mostrar Parqueadero</label>
+
       <div>
-        <h2>PARQUEADERO <small>/PARKING</small></h2>
-        <p>9:00AM A 7:00PM</p>
+        <input id="h" type="text" />
+        <label for="h">Cambio a parquedero de horario habitual</label>
+      </div>
+
+      <input id="cal" type="checkbox" />
+      <label for="cal">en el calendario tiene horario tipo D</label>
+
+      <h4>Horarios segun el dia de la semana</h4>
+      <div class="radio-filter">
+        <input name="status" id="a" type="radio" />
+        <label for="a">a</label>
+        <input name="status" id="b" type="radio" />
+        <label for="a">b</label>
+        <input name="status" id="c" type="radio" />
+        <label for="c">c</label>
+      </div>
+    </div>
+
+    <img src="https://parquedelcafe.co/wp-content/uploads/2021/05/Logo-Parque-Del-Cafe.png" alt="Logo Parque del Cafe">
+    <h1>HORARIOS<small>/MIE-JUE-VIE</small></h1>
+    <div class="content">
+      <div class="group">
+        <div>
+          <h2>PARQUEADERO <small>/PARKING</small></h2>
+          <p id="parqueadero"></p>
+        </div>
+        <div>
+          <h2>TAQUILLAS <small>/TICKET OFFICES</small></h2>
+          <p id="taquillas">9:15AM A 2:30PM</p>
+        </div>
+      </div>
+
+      <div class="group">
+        <div>
+          <h2>RESGISTRADORAS <small>/TURNSTILES</small></h2>
+          <p id="registradoras">9:30AM</p>
+        </div>
+        <div>
+          <h2>TELEFERICO <small>/CABLE CARS</small></h2>
+          <p id="teleferico">9:30AM A 6:00PM</p>
+        </div>
+      </div>
+
+      <div>
+        <h2>MUSEOS Y SALA SENSORIAL DEL CAFE
+          <small>/COFFE MUSEUM AND SENSORY ROOM</small>
+        </h2>
+        <p id="museos">9:30AM A 5:30PM</p>
       </div>
       <div>
-        <h2>TAQUILLAS</h2>
-        <p>9:15AM A 2:30PM</p>
+        <h2>ATRACCIONES
+          <small>/ATRACTIONS</small>
+        </h2>
+        <p id="atracciones">9:30AM A 5:30PM</p>
       </div>
       <div>
-        <h2>RESGISTRADORAS</h2>
-        <p>9:30AM</p>
-      </div>
-      <div>
-        <h2>TELEFERICO</h2>
-        <p>9:30AM A 6:00PM</p>
-      </div>
-      <div>
-        <h2>MUSEOS Y SALA SENSORIAL DEL CAFE</h2>
+        <h2>ZONA: KRATER / YIPPE Y RAPIDOS
+          <small>/ROLLER COASTERS</small>
+        </h2>
         <p>9:30AM A 5:30PM</p>
       </div>
-      <div>
-        <h2>ATRACCIONES</h2>
-        <p>9:30AM A 5:30PM</p>
+      <div  class="group">
+        <div>
+          <h2>SHOW DEL CAFE</h2>
+          <p>9:30AM A 5:30PM</p>
+        </div>
+        <div>
+          <h2>SHOW EL ARTE DEL CAFE</h2>
+          <p>9:30AM A 5:30PM</p>
+        </div>
       </div>
       <div>
-        <h2>ZONA: KRATER / YIPPE Y RAPIDOS</h2>
-        <p>9:30AM A 5:30PM</p>
-      </div>
-      <div>
-        <h2>SHOW DEL CAFE</h2>
-        <p>9:30AM A 5:30PM</p>
-      </div>
-      <div>
-        <h2>SHOW EL ARTE DEL CAFE</h2>
-        <p>9:30AM A 5:30PM</p>
-      </div>
-      <div>
-        <h2>PASEO A CABALLO</h2>
+        <h2>PASEO A CABALLO
+          <small>/HORSE RIDING</small>
+        </h2>
         <p>9:30AM A 5:30PM</p>
       </div>
     </div>
     <h2 class="tittle">HORARIOS DEL TREN / TRAIN</h2>
     <div class="train">
       <div>
-        <h2>ESTACION ARMENIA</h2>
+        <h2>ESTACION ARMENIA
+          <small>/TRAIN</small>
+        </h2>
         <p>MAÑANA:9:50/10:20 10:50/11:20/11:50</p>
         <p>TARDE:12:20/12:50 1:20/1:50/2:20/2:50 3:20 3:50 4:20/4:50</p>
       </div>
       <div>
-        <h2>ESTACION MONTENEGRO</h2>
+        <h2>ESTACION MONTENEGRO
+          <small>/TRAIN</small>
+        </h2>
 
         <p>MAÑANA:10:00/10:30 11:00/11:30</p>
         <p>
@@ -149,14 +216,18 @@
   </body>
 </html>
 
-<script>
+<script type="module">
+  // Calendaros - Tiene la prioridad - dia/mes sin el cero antes si es un solo digito : al tipo de calendario de ese dia. solo si es diferente al habitual
 
-calendarios = {
-  '010203' : 'a'
-}
+  let calendarios = [];
 
-  
-  active = {
+  let date = Temporal.Now.plainDateISO();
+  let dayOfweek = date.dayOfWeek; // 1 al 5 lun- vie 6 -0 sab dom
+  let tipo_horario_semana = dayOfweek > 5 ? "b" : "a"; // a l - v , b s -d
+  let day_of_month = `${date.day}/${date.month}`;
+
+  // Active - Define si una atraccion esta en servicio o no - true funciona - false fuera de servicio
+  let active = {
     parqueadero: true,
     taquillas: true,
     registradoras: true,
@@ -164,14 +235,22 @@ calendarios = {
     museos: true,
   };
 
-  json = {
+  // Cambios al horario habitual = atraccion : nuevo horario, borrar si no se necesita. prioridad sobre el horario habitual y del calendario
+  let cambios_horarios_habituales = {};
+
+  // Array que guarda las horas de inicio y fin por cada atraccion y tipo de horario
+  let horario = {
     parqueadero: {
       a: "9:00AM a 700PM",
       b: "8:30AM a 7:00PM",
+      c: "10:30AM a 10:00PM",
+      d: "7:30AM a 12:00PM",
     },
     taquillas: {
       a: "9:15AM a 2:30PM",
       b: "9:00AM a 2:30PM",
+      c: "10:30AM a 10:00PM",
+      d: "7:30AM a 12:00PM",
     },
     registradoras: {
       a: "9:30AM",
@@ -180,13 +259,96 @@ calendarios = {
     teleferico: {
       a: "9:30AM a 6:00PM",
       b: "8:30AM a 6:30PM",
+      c: "10:30AM a 10:00PM",
+      d: "7:30AM a 12:00PM",
     },
     museos: {
       a: "9:30AM a 5:30PM",
       b: "8:30AM a 5:30PM",
+      c: "10:30AM a 10:00PM",
+      d: "7:30AM a 12:00PM",
     },
   };
 
+  const html_elements = Array.from(
+    document.querySelectorAll(".content p"),
+  ).reduce((acc, el) => {
+    acc[el.id] = el;
+    return acc;
+  }, []);
+  const chk_park = document.querySelector("#pa");
+  const type_of_cal_a = document.querySelector("#a");
+  const type_of_cal_b = document.querySelector("#b");
+  const type_of_cal_c = document.querySelector("#c");
+  const type_cal_type = document.querySelector("#cal");
+  const hor_diff_hab = document.querySelector("#h");
+  const atracciones = Object.keys(horario);
 
-  console.log(json,active,calendarios)
+  chk_park.addEventListener("change", () => {
+    let sdf = !active["parqueadero"];
+    active["parqueadero"] = sdf;
+    change();
+  });
+
+  type_of_cal_a.addEventListener("change", (e) => {
+    let targ = e.target;
+    tipo_horario_semana = "a";
+    change();
+  });
+
+  type_of_cal_b.addEventListener("change", (e) => {
+    let targ = e.target;
+    tipo_horario_semana = "b";
+
+    change();
+  });
+
+  type_of_cal_c.addEventListener("change", (e) => {
+    let targ = e.target;
+    tipo_horario_semana = "c";
+    change();
+  });
+
+  type_cal_type.addEventListener("change", (e) => {
+    let targ = e.target;
+
+    if (targ.checked) {
+      calendarios.push({ "14/5": "d" });
+      return change();
+    }
+
+    calendarios.pop();
+    change();
+  });
+
+  hor_diff_hab.addEventListener("change", (e) => {
+    let value = e.target.value;
+    cambios_horarios_habituales.parqueadero = value;
+    change();
+  });
+
+  function validate(atraccion, exist) {
+    let tipo_horario = exist ? exist[day_of_month] : tipo_horario_semana;
+
+    let print;
+    if (active[atraccion]) {
+      print = cambios_horarios_habituales[atraccion]
+        ? cambios_horarios_habituales[atraccion]
+        : horario[atraccion][tipo_horario];
+    }
+    html_elements[atraccion].innerHTML = print ?? "";
+  }
+
+  function change() {
+    console.log({
+      calendarios,
+      tipo_horario_semana,
+      cambios_horarios_habituales,
+      active,
+    });
+    let exist = calendarios.find((a) => a[day_of_month]);
+    atracciones.forEach((e) => validate(e));
+  }
+
+  change();
 </script>
