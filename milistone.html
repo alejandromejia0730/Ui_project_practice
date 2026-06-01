@@ -273,6 +273,12 @@
               Milstones
             </a>
           </li>
+          <li>
+            <a href="/import.html">
+              <div class="icon"></div>
+              Import Events
+            </a>
+          </li>
         </ul>
       </div>
     </sidebar>
@@ -604,32 +610,29 @@
       let task = Array.from(article.querySelectorAll("li input"));
       let total_task = task.length;
       let total_checked = task.filter((a) => a.checked).length;
-      let percent = (total_checked) / total_task;
+      let percent = total_checked / total_task;
       let complete_bar = article.querySelector("footer div");
       complete_bar.style.transform = `scaleX(${percent})`;
     };
 
     subtask.forEach((el) =>
       el.addEventListener("click", (e) => {
+        let art = el.closest("article");
 
-        let art = el.closest("article")
-
-        let inp_li = el.querySelectorAll("li input")
+        let inp_li = el.querySelectorAll("li input");
 
         let header = el.previousElementSibling.classList;
 
-        let flag = Array.from(inp_li).every(
-          (e) => e.checked == true,
-        );
+        let flag = Array.from(inp_li).every((e) => e.checked == true);
 
         if (flag) {
           get(art);
           return header.add("task-subtask-complete");
         }
-        
+
         header.remove("task-subtask-complete");
         get(art);
-      })
+      }),
     );
   </script>
 </html>
