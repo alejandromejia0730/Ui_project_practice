@@ -4,8 +4,11 @@ from datetime import datetime
 import json
 
 url = 'https://game8.co'
-endpoint = "http://127.0.0.1:5500/savezzz.html"
-page = rq.get(endpoint)
+endpoint = "https://game8.co/games/Zenless-Zone-Zero/archives/457176"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}
+page = rq.get(endpoint, headers=headers)
 soup = BeautifulSoup(page.content, 'html.parser')
 tables = soup.find_all('table',class_='a-table')
 resultados = []
@@ -36,4 +39,7 @@ for i in range(1, len(rows), 2):
        'img' : img_url
     })
 
+f = open("data_zzz.json","w")
+f.write(json.dumps(resultados))
+f.close()
 print(json.dumps(resultados))

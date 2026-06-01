@@ -4,15 +4,18 @@ from datetime import datetime
 import json
 
 url = 'https://game8.co'
-endpoint = "http://127.0.0.1:5500/Save.html"
-page = rq.get(endpoint)
+endpoint = "https://game8.co/games/Wuthering-Waves/archives/453473"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}
+page = rq.get(endpoint, headers=headers)
 soup = BeautifulSoup(page.content, 'html.parser')
+
 tittles = soup.find_all('h4',class_='a-header--4')
 resultados = []
 
 for t in tittles : 
     tittle = t.get_text(strip=True)
-
     table = t.find_next_sibling('table')
 
     img = table.select_one('img')
