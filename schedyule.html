@@ -398,6 +398,34 @@
           }
         }
       }
+
+      .dialog-footer {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        & > button {
+          padding-block: 0.5rem;
+          padding-inline: 1rem;
+          border-radius: 0.5rem;
+          background: var(--color-surface-3);
+          color: var(--color-foreground);
+          border: none;
+          cursor: pointer;
+
+          &:hover {
+            background: var(--color-surface-3-hover);
+          }
+        }
+      }
+
+      #dialog-related {
+        left: auto;
+        right: 18rem;
+        top: auto;
+        bottom: 6rem;
+        height: 27rem;
+        width: 12rem;
+      }
     </style>
   </head>
   <body>
@@ -502,7 +530,7 @@
             </div>
           </section>
           <!-- El botón con method="dialog" cierra la ventana automáticamente -->
-          <footer>
+          <footer class="dialog-footer">
             <button popovertarget="dialog" popovertargetaction="hide">
               Cancel
             </button>
