@@ -126,6 +126,7 @@
         scrollbar-width: thin;
         scrollbar-color: #b6b5b5f7 transparent;
         scroll-behavior: smooth;
+        position: relative;
       }
 
       .workspace {
@@ -277,6 +278,126 @@
         border-right: 1px solid var(--color-surface-2);
         pointer-events: none;
       }
+
+      .btn-add-modal {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        position: fixed;
+        z-index: 10;
+        background: var(--color-foreground-secundary);
+        border: none;
+        cursor: pointer;
+        bottom: 1.5rem;
+        right: 3rem;
+
+        &:hover {
+          background: var(--color-foreground-secundary-hover);
+        }
+      }
+
+      .dialog-add {
+        width: 16rem;
+        height: 30rem;
+        top: auto;
+        right: 1rem;
+        left: auto;
+        bottom: 5rem;
+        border-radius: 2rem;
+        background-color: var(--color-surface-2);
+        border: none;
+        color: var(--color-foreground);
+        padding: 1rem;
+
+        flex-direction: column;
+        gap: 1rem;
+
+        & h2 {
+          text-align: center;
+        }
+      }
+
+      .dialog-add:popover-open {
+        display: flex;
+      }
+
+      .dialog-add section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1 0 0;
+      }
+
+      .dialog-add section > input[type="datetime-local"] {
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        border-radius: 1rem;
+        background-color: var(--color-surface-3);
+        color: var(--color-foreground);
+        border: none;
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+
+      .dialog-add span {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+
+        & > input {
+          display: none;
+        }
+
+        & > label {
+          padding-block: 0.5rem;
+          padding-inline: 1rem;
+          border-radius: 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            background: var(--color-surface-3-hover);
+          }
+        }
+
+        & > input:checked + label {
+          background: var(--color-foreground-secundary);
+          color: var(--color-surface-1);
+        }
+      }
+
+      .related-select {
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
+        border-radius: 0.5rem;
+        background: var(--color-surface-3);
+        color: var(--color-foreground);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background: var(--color-surface-3-hover);
+        }
+      }
+
+      .title {
+        & label {
+        }
+        & input {
+          padding-inline: 1rem;
+          padding-block: 0.5rem;
+          border-radius: 1rem;
+          background-color: var(--color-surface-3);
+          color: var(--color-foreground);
+          border: none;
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
     </style>
   </head>
   <body>
@@ -313,6 +434,81 @@
     </sidebar>
     <main>
       <section class="wrapper">
+        <button popovertarget="dialog" class="btn-add-modal" id="new-task">
+          Add
+        </button>
+        <dialog id="dialog" class="dialog-add" popover>
+          <h2>New Task</h2>
+          <section>
+            <input type="datetime-local" name="from" id="from" />
+            <input type="datetime-local" name="to" id="to" />
+            <span>
+              <input type="radio" name="type" id="type" />
+              <label for="type">Event</label>
+
+              <input type="radio" name="type" id="type2" />
+              <label for="type2">Task</label>
+
+              <input type="radio" name="type" id="type3" />
+              <label for="type3">Game</label>
+
+              <input type="radio" name="type" id="type4" />
+              <label for="type4">No related</label>
+            </span>
+            <span>
+              <button
+                popovertarget="dialog-related"
+                class="related-select"
+                id="select-related"
+              >
+                Select Related
+              </button>
+              <dialog id="dialog-related" popover>
+                <h4>select related</h4>
+                <ul>
+                  <li>
+                    <p>game</p>
+                    <p>tittle</p>
+                    <p>remaining</p>
+                  </li>
+                  <li>
+                    <p>game</p>
+                    <p>tittle</p>
+                    <p>remaining</p>
+                  </li>
+                  <li>
+                    <p>game</p>
+                    <p>tittle</p>
+                    <p>remaining</p>
+                  </li>
+                  <li>
+                    <p>game</p>
+                    <p>tittle</p>
+                    <p>remaining</p>
+                  </li>
+                </ul>
+              </dialog>
+            </span>
+            <div class="title">
+              <label for="title-task">Title</label>
+              <input type="text" id="title-task" />
+            </div>
+            <div class="game-filter">
+              <div class="icon game-filter-icon"></div>
+              <div class="icon game-filter-icon"></div>
+              <div class="icon game-filter-icon"></div>
+              <div class="icon game-filter-icon"></div>
+              <div class="icon game-filter-icon"></div>
+            </div>
+          </section>
+          <!-- El botón con method="dialog" cierra la ventana automáticamente -->
+          <footer>
+            <button popovertarget="dialog" popovertargetaction="hide">
+              Cancel
+            </button>
+            <button>Confirm</button>
+          </footer>
+        </dialog>
         <section class="workspace">
           <div></div>
           <div class="days">
@@ -424,5 +620,11 @@
       </section>
     </main>
   </body>
-  <script type="module"></script>
+  <script type="module">
+    popovertarget="my-dialog" popovertargetaction="hide"
+        const add = document.querySelector("#new-task");
+        const dialog = document.querySelector("#dialog");
+
+        console.log(add);
+  </script>
 </html>
