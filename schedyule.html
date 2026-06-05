@@ -34,6 +34,9 @@
         padding: 0;
         box-sizing: border-box;
         font-family: sans-serif;
+        scrollbar-width: thin;
+        scrollbar-color: #b6b5b5f7 transparent;
+        scroll-behavior: smooth;
       }
 
       body {
@@ -328,7 +331,8 @@
         flex: 1 0 0;
       }
 
-      .dialog-add section > input[type="datetime-local"] {
+      .dialog-add section > span > input[type="time"],
+      input[type="date"] {
         padding-inline: 1rem;
         padding-block: 0.5rem;
         border-radius: 1rem;
@@ -341,7 +345,18 @@
         }
       }
 
-      .dialog-add span {
+      .dialog-add section span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+        & > input {
+          width: 8rem;
+        }
+      }
+
+      .dialog-add span#select-type {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -392,11 +407,16 @@
           background-color: var(--color-surface-3);
           color: var(--color-foreground);
           border: none;
+          width: 100%;
 
           &:focus-visible {
             outline: none;
           }
         }
+      }
+
+      .hidden {
+        display: none;
       }
 
       .dialog-footer {
@@ -424,7 +444,49 @@
         top: auto;
         bottom: 6rem;
         height: 27rem;
-        width: 12rem;
+        width: 15rem;
+        border-radius: 2rem;
+        background-color: var(--color-surface-2);
+        border: none;
+        color: var(--color-foreground);
+        padding: 0.25rem;
+
+        flex-direction: column;
+        gap: 1rem;
+
+        & h4 {
+          text-align: center;
+        }
+      }
+
+      .related-list {
+        list-style: none;
+        overflow-y: auto;
+        & > li {
+          margin: 0.5rem;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          text-align: center;
+          background: var(--color-surface-3);
+          cursor: pointer;
+
+          &:hover {
+            background: var(--color-surface-3-hover);
+          }
+
+          & span {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+
+      .active {
+        background-color: var(--color-foreground-secundary-accent);
+      }
+
+      .game-filter {
+        margin: auto;
       }
     </style>
   </head>
@@ -468,51 +530,108 @@
         <dialog id="dialog" class="dialog-add" popover>
           <h2>New Task</h2>
           <section>
-            <input type="datetime-local" name="from" id="from" />
-            <input type="datetime-local" name="to" id="to" />
+            <input type="date" name="day" id="day" />
             <span>
-              <input type="radio" name="type" id="type" />
+              <label for="from">Desde</label>
+              <input type="time" name="from" id="from" step="1200" />
+            </span>
+            <span>
+              <label for="to">Hasta</label>
+              <input type="time" name="to" id="to" step="1200" />
+            </span>
+
+            <span id="select-type">
+              <input type="radio" name="type" id="type" value="event" />
               <label for="type">Event</label>
 
-              <input type="radio" name="type" id="type2" />
+              <input type="radio" name="type" id="type2" value="task" />
               <label for="type2">Task</label>
 
-              <input type="radio" name="type" id="type3" />
-              <label for="type3">Game</label>
-
-              <input type="radio" name="type" id="type4" />
+              <input type="radio" name="type" id="type4" value="no" checked />
               <label for="type4">No related</label>
             </span>
             <span>
               <button
                 popovertarget="dialog-related"
-                class="related-select"
+                class="related-select hidden"
                 id="select-related"
               >
                 Select Related
               </button>
               <dialog id="dialog-related" popover>
-                <h4>select related</h4>
-                <ul>
-                  <li>
-                    <p>game</p>
-                    <p>tittle</p>
-                    <p>remaining</p>
+                <ul class="related-list">
+                  <li data-title="this is a title" data-game="zzz">
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a title</p>
+                  </li>
+                  <li data-title="this is a title large" data-game="endfield">
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a large title very larger</p>
+                  </li>
+                  <li data-title="this is a title very very" data-game="wuwa">
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very larger</p>
                   </li>
                   <li>
-                    <p>game</p>
-                    <p>tittle</p>
-                    <p>remaining</p>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
                   </li>
                   <li>
-                    <p>game</p>
-                    <p>tittle</p>
-                    <p>remaining</p>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
                   </li>
                   <li>
-                    <p>game</p>
-                    <p>tittle</p>
-                    <p>remaining</p>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
+                  </li>
+                  <li>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
+                  </li>
+                  <li>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
+                  </li>
+                  <li>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>This is a larger title very very very larger</p>
+                  </li>
+                  <li>
+                    <span>
+                      <p>ZZZ</p>
+                      <p>20day remaining</p>
+                    </span>
+                    <p>
+                      This is a larger title very very very very very very
+                      larger
+                    </p>
                   </li>
                 </ul>
               </dialog>
@@ -522,10 +641,9 @@
               <input type="text" id="title-task" />
             </div>
             <div class="game-filter">
-              <div class="icon game-filter-icon"></div>
-              <div class="icon game-filter-icon"></div>
-              <div class="icon game-filter-icon"></div>
-              <div class="icon game-filter-icon"></div>
+              <div data-game="zzz" class="icon game-filter-icon"></div>
+              <div data-game="wuwa" class="icon game-filter-icon"></div>
+              <div data-game="endfield" class="icon game-filter-icon"></div>
               <div class="icon game-filter-icon"></div>
             </div>
           </section>
@@ -534,7 +652,7 @@
             <button popovertarget="dialog" popovertargetaction="hide">
               Cancel
             </button>
-            <button>Confirm</button>
+            <button id="confirm">Confirm</button>
           </footer>
         </dialog>
         <section class="workspace">
@@ -568,6 +686,19 @@
             <h4>10:00</h4>
             <h4>11:00</h4>
           </div>
+          <template id="item-work-template">
+            <div style="grid-column: 2; grid-row: 2 / span 1" class="item-work">
+              <article>
+                <small id="time">3:40 - 4:00</small>
+                <header class="one-cell">
+                  <div class="icon"></div>
+                  <p id="title">Daily Task</p>
+                </header>
+                <section></section>
+                <footer></footer>
+              </article>
+            </div>
+          </template>
           <div class="cells-background"></div>
           <div style="grid-column: 2; grid-row: 2 / span 1" class="item-work">
             <article>
@@ -649,10 +780,114 @@
     </main>
   </body>
   <script type="module">
-    popovertarget="my-dialog" popovertargetaction="hide"
-        const add = document.querySelector("#new-task");
-        const dialog = document.querySelector("#dialog");
+    const related_container = document.querySelector("#dialog-related");
+    const input_title = document.querySelector("#title-task");
+    const select_type = document.querySelector("#select-type");
+    const related_button = document.querySelector("#select-related");
+    const from = document.querySelector("#from");
+    const to = document.querySelector("#to");
+    const day = document.querySelector("#day");
+    const confirm = document.querySelector("#confirm");
+    const template = document.querySelector("#item-work-template")
+    const workspace = document.querySelector(".workspace")
 
-        console.log(add);
+    let last_element,
+      last_type_task = "no";
+
+    select_type.addEventListener("click", () => {
+      if (event.target.tagName !== "INPUT") return;
+
+      let input_t = document.querySelector("input:checked");
+
+      if (last_type_task == input_t.value) return;
+
+      last_type_task = input_t?.value;
+      input_title.value = "";
+
+      if (input_t?.value !== "no")
+        return (related_button.style.display = "block");
+
+      related_button.style.display = "none";
+      related_container.hidePopover();
+      last_element?.classList.remove("active");
+      last_element = undefined;
+    });
+
+    related_container.addEventListener("click", (e) => {
+      let element = e.target.closest("li");
+
+      if (element?.nodeName !== "LI") return;
+
+      let { title, game } = element.dataset;
+      input_title.value = title ?? "not found";
+
+      let game_active = document.querySelector(
+        `div[data-game=${game}].game-filter-icon`,
+      );
+
+      if (last_element == game_active) return;
+
+      game_active?.classList.add("active");
+      last_element?.classList.remove("active");
+      last_element = game_active;
+      related_container.hidePopover();
+    });
+
+    const min20 = (e) => {
+      let input = e.target;
+      if (!input.value) return;
+
+      let [horas, minutos] = input.value.split(":").map(Number);
+
+      let minutosRedondeados = Math.round(minutos / 20) * 20;
+
+      if (minutosRedondeados === 60) {
+        minutosRedondeados = 0;
+        horas += 1;
+      }
+      if (horas === 24) {
+        horas = 0;
+      }
+      const horasFormateadas = String(horas).padStart(2, "0");
+      const minutosFormateados = String(minutosRedondeados).padStart(2, "0");
+      input.value = `${horasFormateadas}:${minutosFormateados}`;
+    };
+
+    from.addEventListener("change", (e) => {
+      min20(e);
+      to.value = from.value;
+    });
+
+    to.addEventListener("change", (e) => {
+      min20(e);
+    });
+
+    confirm.addEventListener("click", () => {
+      const clone = document.importNode(template.content, true);
+
+      const container = clone.querySelector('div.item-work')
+      const section = clone.querySelector('section')
+      const footer = clone.querySelector('footer')
+
+      section.style.display = 'none'
+      footer.style.display = 'none'
+
+      let first_date =  Temporal.PlainTime.from(from.value)
+      let diff =  first_date.until(Temporal.PlainTime.from(to.value))
+
+      let span  = (diff.minutes + (diff.hours*60))/20
+
+      let row =  ((first_date.minute?? 0) + (first_date.hour*60))/20
+
+      container.style.gridColumnStart  = 2
+      container.style.gridRowStart = row - 1
+      container.style.gridRowEnd = `span ${span}`
+
+      console.log(
+        container, row, span, first_date.minute, first_date.hour, first_date
+      );
+
+      workspace.appendChild(clone)
+    });
   </script>
 </html>
