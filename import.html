@@ -392,6 +392,18 @@
     const eventEnter = ["dragenter", "dragover"];
     const eventOut = ["dragleave", "drop"];
 
+    let dateT,date
+    try {
+       dateT = Temporal.Now.plainDateISO().dayOfWeek 
+    } catch (error) {
+        dateL= new Date()
+        date = dateL.getDAy()
+    }
+
+    let day = dateT ?? date
+    console.log(day)
+
+
     eventEnter.forEach((eventName) => {
       dropArea.addEventListener(eventName, (e) => {
         e.preventDefault();
