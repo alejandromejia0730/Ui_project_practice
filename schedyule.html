@@ -70,7 +70,7 @@
         width: 16rem;
         background: var(--color-surface-1);
         padding: 0.5rem;
-        margin-block: .5rem;
+        margin-block: 0.5rem;
         flex: 0 0 auto;
         border-radius: 1rem;
       }
@@ -534,6 +534,12 @@
           & > h4 {
             display: inline-block;
           }
+
+          & span {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 0.5rem;
+          }
         }
         & > #task-section {
           grid-row: 2 / span 2;
@@ -588,17 +594,25 @@
         width: 14rem;
         color: var(--color-foreground-secondary);
         background: var(--color-surface-2);
-        padding: 1rem;
+        padding: 1.25rem;
+
+        & p {
+          text-align: end;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--color-foreground-secondary-hover);
+          }
+        }
 
         & div {
-          margin-block: 1rem;
+          margin-block: 0.5rem;
 
           & h4 {
             color: var(--color-foreground);
             font-weight: 500;
             font-size: 1rem;
           }
-
         }
 
         & ul {
@@ -607,16 +621,26 @@
         }
 
         & li {
-          cursor : pointer;
-          line-height: 1.5  rem;
+          line-height: 1.5 rem;
+
+          & input {
+            display: none;
+          }
+
+          & label {
+            cursor: pointer;
+            display: inline-block;
+            width: 100%;
+          }
+
+          & input:checked + label {
+            color: var(--color-foreground-accent);
+            font-weight: 500;
+            background: none;
+          }
 
           &:hover {
             color: var(--color-foreground-secondary-hover);
-          }
-
-          &.active{
-            color: var(--color-foreground-secondary-active);
-            background: none;
           }
         }
       }
@@ -713,32 +737,82 @@
     </sidebar>
     <main>
       <section class="filters-section">
+        <p id="clear">Clear all</p>
         <div>
           <h4>Games</h4>
           <ul>
-            <li class="active">Wuthering Waves</li>
-            <li>Zenless Zone Zero</li>
-            <li>Arcknigth Endfield</li>
-            <li>Epic 7</li>
-            <li>CzN</li>
+            <li>
+              <input type="radio" name="filter-game" id="wuwa" value="wuwa" />
+              <label for="wuwa">Wuthering Waves</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-game" id="zzz" value="zzz" />
+              <label for="zzz">Zenless Zone Zero</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="filter-game"
+                id="endfield"
+                value="endfield"
+              />
+              <label for="endfield">Arcknigth Endfield</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-game" id="epic7" value="epic7" />
+              <label for="epic7">Epic 7</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-game" id="czn" value="czn" />
+              <label for="czn">CzN</label>
+            </li>
           </ul>
         </div>
         <div>
-          <h4>Types</h4>
+          <h4>Task Types</h4>
           <ul>
-            <li>ToDo Task</li>
-            <li>Free Task</li>
-            <li>Recurrent Task</li>
-            <li>Events</li>
+            <li>
+              <input type="radio" name="day-filter" id="todo" value="todo" />
+              <label for="todo">To-Do Task</label>
+            </li>
+            <li>
+              <input type="radio" name="day-filter" id="free" value="free" />
+              <label for="free">Free Task</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="day-filter"
+                id="recurrent"
+                value="recurrent"
+              />
+              <label for="recurrent">Recurrent Task</label>
+            </li>
+            <li>
+              <input type="radio" name="day-filter" id="event" value="event" />
+              <label for="event">Event</label>
+            </li>
           </ul>
         </div>
         <div>
-          <h4>Type of Day</h4>
-          <ul>
-            <li>Free</li>
-            <li>Close</li>
-            <li>Normal</li>
-            <li>Opening</li>
+          <h4>Day Type</h4>
+                   <ul>
+            <li>
+              <input type="radio" name="filter-status" id="free-status" value="free">
+              <label for="free-status">Free</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-status" id="closing" value="closing">
+              <label for="closing">Closing</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-status" id="normal" value="normal">
+              <label for="normal">Normal</label>
+            </li>
+            <li>
+              <input type="radio" name="filter-status" id="opening" value="opening">
+              <label for="opening">Opening</label>
+            </li>
           </ul>
         </div>
       </section>
@@ -909,7 +983,7 @@
             <div></div>
             <div class="days">
               <h4>Lunes<small>16</small></h4>
-              <h4>Martes <small>17</small> </h4>
+              <h4>Martes <small>17</small></h4>
               <h4>Miercoles</h4>
               <h4>Jueves</h4>
               <h4>Viernes</h4>
@@ -968,7 +1042,10 @@
                 <div class="icon"></div>
                 <header id="task-header">
                   <h4>Wuwa Event</h4>
-                  <small>10 - 11</small>
+                  <span>
+                    <small>10 - 11</small>
+                    <small>Events</small>
+                  </span>
                 </header>
               </article>
             </div>
@@ -981,7 +1058,10 @@
                 <div class="icon"></div>
                 <header id="task-header">
                   <h4>Wuwa Event</h4>
-                  <small>10 - 11</small>
+                  <span>
+                    <small>10 - 11</small>
+                    <small>Events</small>
+                  </span>
                 </header>
                 <section id="task-section">
                   <img
@@ -1001,7 +1081,10 @@
                 <div class="icon"></div>
                 <header id="task-header">
                   <h4>Wuwa Event</h4>
-                  <small>10 - 11</small>
+                  <span>
+                    <small>10 - 11</small>
+                    <small>Events</small>
+                  </span>
                 </header>
               </article>
             </div>
@@ -1014,7 +1097,10 @@
                 <div class="icon"></div>
                 <header id="task-header">
                   <h4>Wuwa Event</h4>
-                  <small>10 - 11</small>
+                  <span>
+                    <small>10 - 11</small>
+                    <small>Events</small>
+                  </span>
                 </header>
               </article>
             </div>
