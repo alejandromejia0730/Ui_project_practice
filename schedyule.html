@@ -6,38 +6,25 @@
     <title>Document</title>
     <style>
       :root {
-        --color-bg: oklch(
-          14.5% 0.055 252
-        ); /* #0B1627 - Fondo base, un azul noche profundo y rico */
-        --color-surface-1: oklch(
-          19% 0.07 252
-        ); /* #0F2039 - Tarjetas y paneles principales */
-        --color-surface-2: oklch(
-          23.5% 0.085 252
-        ); /* #132B4C - Inputs, campos y bloques interactivos */
+        --color-bg: oklch(14.5% 0.055 252);
+        --color-surface-1: oklch(19% 0.07 252);
+        --color-surface-2: oklch(23.5% 0.085 252);
         --color-surface-3: oklch(28% 0.1 252);
 
-        --color-foreground: oklch(
-          97.5% 0.015 252
-        ); /* #F3F7FE - Blanco gélido nítido de alta legibilidad */
-        --color-foreground-secondary: oklch(
-          74% 0.05 252
-        ); /* #A0B9E6 - Texto secundario perfectamente integrado */
+        --color-foreground: oklch(97.5% 0.015 252);
 
-        /* Acento Principal: Azul neón optimizado para fondos abisales */
-        --color-foreground-accent: oklch(
-          63% 0.25 255
-        ); /* #1A75FF - Azul eléctrico puro, imán visual absoluto */
+        --color-foreground-secondary: oklch(74% 0.05 252);
+        --color-foreground-secondary-hover: oklch(85% 0.04434 252.978);
+        --color-foreground-secondary-active: oklch(100% 0.05 252);
+        --color-foreground-accent: oklch(63% 0.25 255);
 
-        /* Acento de Contraste para Imágenes / Badges */
-        --accent-high-contrast: oklch(66.0% 0.270 43);
-          /* Estados semánticos calibrados para este nuevo fondo */
-          --color-success: oklch(78% 0.18 145); /* #3FE487 - Éxito */
+        --accent-high-contrast: oklch(66% 0.27 43);
+        --color-success: oklch(78% 0.18 145); /* #3FE487 - Éxito */
         --color-warning: oklch(76% 0.165 75); /* #FFAE19 - Advertencia */
         --color-error: oklch(66% 0.21 25);
 
-        --cell-row: 5.5rem;
-        --cell-column: 15rem;
+        --cell-row: 4.75rem;
+        --cell-column: 14rem;
         --number-columns: 14;
       }
 
@@ -67,24 +54,23 @@
         height: 100vh;
         overflow-y: hidden;
         background: var(--color-bg);
-        padding: 0.5rem;
       }
 
       main {
         display: flex;
         height: 100vh;
-        gap: 2rem;
+        gap: 1rem;
         overflow-y: hidden;
         padding-inline: 1rem;
         flex: 1 1 auto;
       }
 
       sidebar {
-        height: 100vh;
         overflow-y: hidden;
         width: 16rem;
         background: var(--color-surface-1);
         padding: 0.5rem;
+        margin-block: .5rem;
         flex: 0 0 auto;
         border-radius: 1rem;
       }
@@ -150,7 +136,7 @@
 
       .wrapper {
         overflow: auto;
-        height: 97vh;
+        height: 100vh;
         width: 100%;
         scrollbar-width: thin;
         scrollbar-color: #b6b5b5f7 transparent;
@@ -161,11 +147,11 @@
       .workspace {
         display: grid;
         width: calc(var(--cell-column) * var(--number-columns));
-        grid-template-columns: 5rem repeat(
+        grid-template-columns: 3.5rem repeat(
             var(--number-columns),
             var(--cell-column)
           );
-        grid-template-rows: 5rem repeat(72, var(--cell-row));
+        grid-template-rows: 3.5rem repeat(72, var(--cell-row));
         grid-auto-flow: column;
         border-radius: 1rem;
         position: relative;
@@ -193,9 +179,16 @@
           border-left: 1px solid var(--color-surface-1);
           color: var(--color-foreground);
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           padding-left: 0.1rem;
+          font-size: 1.25rem;
+
+          & > small {
+            font-size: 0.75rem;
+            color: var(--color-foreground-secondary);
+          }
         }
       }
 
@@ -231,15 +224,11 @@
 
       .item-work article {
         position: sticky;
-        top: 5rem;
+        top: 4rem;
         display: flex;
         flex-direction: column;
 
         & small {
-          position: absolute;
-          bottom: 0.2rem;
-          right: 0.5rem;
-          z-index: 4;
           font-size: 0.75rem;
           color: color-mix(var(--color-foreground-secondary), transparent);
         }
@@ -266,19 +255,27 @@
       }
 
       .btn-add-modal {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        position: fixed;
-        z-index: 10;
-        background: var(--color-foreground-secondary);
+        padding: 0.25rem 1rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem;
+
+        background: var(--color-surface-1);
+        color: var(--color-foreground);
+        font-weight: 600;
+        line-height: 1rem;
+        font-size: 1rem;
+        gap: 0.25rem;
         border: none;
         cursor: pointer;
-        bottom: 1.5rem;
-        right: 3rem;
 
         &:hover {
-          background: var(--color-foreground-secundary-hover);
+          background: var(--color-surface-2);
+        }
+
+        & > svg {
+          width: 1.25rem;
+          aspect-ratio: 1 / 1;
         }
       }
 
@@ -521,7 +518,7 @@
         grid-template-columns: 2rem 1fr;
         background: var(--color-surface-2);
         align-items: center;
-        padding: 0.5rem;
+        padding: 0.25rem;
         border-radius: 1rem;
         row-gap: 0.25rem;
 
@@ -555,8 +552,72 @@
           grid-column: 2;
           justify-self: end;
           font-size: 0.75rem;
-          padding: .5rem;
+          padding: 0.5rem;
           color: var(--accent-high-contrast);
+        }
+      }
+
+      .navigator {
+        color: var(--color-foreground);
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & h4,
+        h3 {
+          display: inline-block;
+        }
+
+        & h4 {
+          color: var(--color-foreground-secondary);
+        }
+
+        & h3 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .section-workspace {
+        height: 100vh;
+        width: 80%;
+        flex: 0 1 auto;
+      }
+
+      .filters-section {
+        width: 14rem;
+        color: var(--color-foreground-secondary);
+        background: var(--color-surface-2);
+        padding: 1rem;
+
+        & div {
+          margin-block: 1rem;
+
+          & h4 {
+            color: var(--color-foreground);
+            font-weight: 500;
+            font-size: 1rem;
+          }
+
+        }
+
+        & ul {
+          list-style: none;
+          padding-inline: 1rem;
+        }
+
+        & li {
+          cursor : pointer;
+          line-height: 1.5  rem;
+
+          &:hover {
+            color: var(--color-foreground-secondary-hover);
+          }
+
+          &.active{
+            color: var(--color-foreground-secondary-active);
+            background: none;
+          }
         }
       }
     </style>
@@ -651,10 +712,37 @@
       </div>
     </sidebar>
     <main>
-      <section class="wrapper">
-        <button popovertarget="dialog" class="btn-add-modal" id="new-task">
-          Add
-        </button>
+      <section class="filters-section">
+        <div>
+          <h4>Games</h4>
+          <ul>
+            <li class="active">Wuthering Waves</li>
+            <li>Zenless Zone Zero</li>
+            <li>Arcknigth Endfield</li>
+            <li>Epic 7</li>
+            <li>CzN</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Types</h4>
+          <ul>
+            <li>ToDo Task</li>
+            <li>Free Task</li>
+            <li>Recurrent Task</li>
+            <li>Events</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Type of Day</h4>
+          <ul>
+            <li>Free</li>
+            <li>Close</li>
+            <li>Normal</li>
+            <li>Opening</li>
+          </ul>
+        </div>
+      </section>
+      <section class="section-workspace">
         <dialog id="dialog" class="dialog-add" popover>
           <h2>New Task</h2>
           <section>
@@ -783,48 +871,117 @@
             <button id="confirm">Confirm</button>
           </footer>
         </dialog>
-        <section class="workspace">
-          <div></div>
-          <div class="days">
-            <h4>Lunes 03/05</h4>
-            <h4>Martes</h4>
-            <h4>Miercoles</h4>
-            <h4>Jueves</h4>
-            <h4>Viernes</h4>
-            <h4>Sabado</h4>
-            <h4>Domingo</h4>
-            <h4>Lunes</h4>
-            <h4>Martes</h4>
-            <h4>Miercoles</h4>
-            <h4>Jueves</h4>
-            <h4>Viernes</h4>
-            <h4>Sabado</h4>
-            <h4>Domingo</h4>
-          </div>
-          <div class="hours">
-            <h4>1:00</h4>
-            <h4>2:00</h4>
-            <h4>3:00</h4>
-            <h4>4:00</h4>
-            <h4>5:00</h4>
-            <h4>6:00</h4>
-            <h4>7:00</h4>
-            <h4>8:00</h4>
-            <h4>9:00</h4>
-            <h4>10:00</h4>
-            <h4>11:00</h4>
-          </div>
-          <div class="cells-background"></div>
-          <template id="item-work-template">
+        <dialog id="items">
+          <!--
+          Tabs Events
+          Tabs Task
+            On proceess Task
+            Pocket Task
+         -->
+        </dialog>
+        <div class="navigator">
+          <span>
+            <h3>Today</h3>
+            <h4>14-October</h4>
+          </span>
+          <button popovertarget="dialog" class="btn-add-modal" id="new-task">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 5l0 14" />
+              <path d="M5 12l14 0" />
+            </svg>
+            Create New
+          </button>
+        </div>
+        <div class="wrapper">
+          <section class="workspace">
+            <div></div>
+            <div class="days">
+              <h4>Lunes<small>16</small></h4>
+              <h4>Martes <small>17</small> </h4>
+              <h4>Miercoles</h4>
+              <h4>Jueves</h4>
+              <h4>Viernes</h4>
+              <h4>Sabado</h4>
+              <h4>Domingo</h4>
+              <h4>Lunes</h4>
+              <h4>Martes</h4>
+              <h4>Miercoles</h4>
+              <h4>Jueves</h4>
+              <h4>Viernes</h4>
+              <h4>Sabado</h4>
+              <h4>Domingo</h4>
+            </div>
+            <div class="hours">
+              <h4>1:00</h4>
+              <h4>2:00</h4>
+              <h4>3:00</h4>
+              <h4>4:00</h4>
+              <h4>5:00</h4>
+              <h4>6:00</h4>
+              <h4>7:00</h4>
+              <h4>8:00</h4>
+              <h4>9:00</h4>
+              <h4>10:00</h4>
+              <h4>11:00</h4>
+            </div>
+            <div class="cells-background"></div>
+            <template id="item-work-template">
+              <div
+                id="item-work"
+                style="grid-column: 2; grid-row: 2 / span 1"
+                class="item-work"
+              >
+                <article id="content-task">
+                  <div class="icon"></div>
+                  <header id="task-header">
+                    <h4>Wuwa Event</h4>
+                    <small>10 - 11</small>
+                  </header>
+                  <section id="task-section">
+                    <img
+                      src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
+                      alt=""
+                    />
+                  </section>
+                  <footer id="task-footer">3 days remaining</footer>
+                </article>
+              </div>
+            </template>
             <div
               id="item-work"
-              style="grid-column: 2; grid-row: 2 / span 1"
+              style="grid-column: 2; grid-row: 4 / span 1"
               class="item-work"
             >
               <article id="content-task">
                 <div class="icon"></div>
                 <header id="task-header">
                   <h4>Wuwa Event</h4>
+                  <small>10 - 11</small>
+                </header>
+              </article>
+            </div>
+            <div
+              id="item-work"
+              style="grid-column: 3; grid-row: 5 / span 5"
+              class="item-work"
+            >
+              <article id="content-task">
+                <div class="icon"></div>
+                <header id="task-header">
+                  <h4>Wuwa Event</h4>
+                  <small>10 - 11</small>
                 </header>
                 <section id="task-section">
                   <img
@@ -835,66 +992,34 @@
                 <footer id="task-footer">3 days remaining</footer>
               </article>
             </div>
-          </template>
-          <div
-            id="item-work"
-            style="grid-column: 2; grid-row: 4 / span 1"
-            class="item-work"
-          >
-            <article id="content-task">
-              <div class="icon"></div>
-              <header id="task-header">
-                <h4>Wuwa Event</h4>
-              </header>
-            </article>
-          </div>
-          <div
-            id="item-work"
-            style="grid-column: 3; grid-row: 5 / span 5"
-            class="item-work"
-          >
-            <article id="content-task">
-              <div class="icon"></div>
-              <header id="task-header">
-                <h4>Wuwa Event</h4>
-              </header>
-              <section id="task-section">
-                <img
-                  src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                  alt=""
-                />
-              </section>
-              <footer id="task-footer">3 days remaining</footer>
-            </article>
-          </div>
-          <div
-            id="item-work"
-            style="grid-column: 2; grid-row: 2 / span 2"
-            class="item-work"
-          >
-            <article id="content-task">
-              <div class="icon"></div>
-              <header id="task-header">
-                <h4>Wuwa Event</h4>
-              </header>
-            </article>
-          </div>
-          <div
-            id="item-work"
-            style="grid-column: 3; grid-row: 2 / span 2"
-            class="item-work"
-          >
-            <article id="content-task">
-              <div class="icon"></div>
-              <header id="task-header">
-                <h4>Wuwa Event</h4>
-              </header>
-            </article>
-          </div>
-          <dialog id="dialog-confirm" class="dialog-confirm" popover open>
-            <div class="icon"></div>
-          </dialog>
-        </section>
+            <div
+              id="item-work"
+              style="grid-column: 2; grid-row: 2 / span 2"
+              class="item-work"
+            >
+              <article id="content-task">
+                <div class="icon"></div>
+                <header id="task-header">
+                  <h4>Wuwa Event</h4>
+                  <small>10 - 11</small>
+                </header>
+              </article>
+            </div>
+            <div
+              id="item-work"
+              style="grid-column: 3; grid-row: 2 / span 2"
+              class="item-work"
+            >
+              <article id="content-task">
+                <div class="icon"></div>
+                <header id="task-header">
+                  <h4>Wuwa Event</h4>
+                  <small>10 - 11</small>
+                </header>
+              </article>
+            </div>
+          </section>
+        </div>
       </section>
     </main>
   </body>
