@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  /* Crea una nueva clase llamada bg-marca-pastelo text-marca-pastel */
+  --color-marca-pastel: color-mix(in srgb, #3b82f6 30%, white);
+}
