@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
         --color-bg: oklch(14.5% 0.055 252);
@@ -135,13 +137,13 @@
       }
 
       .wrapper {
-        overflow: auto;
+        /*overflow: auto;
         height: 100vh;
         width: 100%;
         scrollbar-width: thin;
         scrollbar-color: #b6b5b5f7 transparent;
         scroll-behavior: smooth;
-        position: relative;
+        position: relative;*/
       }
 
       .workspace {
@@ -210,7 +212,7 @@
       }
 
       .item-work {
-        width: calc(100% - 1rem);
+        /* width: calc(100% - 1rem);
         height: calc(100% - 1rem);
         place-self: center;
         background: color-mix(var(--color-surface-3), #030122);
@@ -219,19 +221,18 @@
         border-radius: 1.25rem;
         position: relative;
         z-index: 0;
-        overflow: clip;
+        overflow: clip;*/
       }
 
       .item-work article {
-        position: sticky;
+        /*position: sticky;
         top: 4rem;
-        display: flex;
         flex-direction: column;
 
         & small {
           font-size: 0.75rem;
           color: color-mix(var(--color-foreground-secondary), transparent);
-        }
+        }*/
       }
 
       .cells-background {
@@ -292,7 +293,7 @@
         color: var(--color-foreground);
         padding: 1rem;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.5rem;
       }
 
       .dialog-add:popover-open {
@@ -321,10 +322,10 @@
       }
 
       .dialog-add section span {
-        display: flex;
+        /*display: flex;
         flex-direction: column;
         gap: 0.5rem;
-
+*/
         & > input {
           margin-inline: 0.5rem;
         }
@@ -334,7 +335,7 @@
         }
       }
 
-      .dialog-add span#select-type {
+      /*  .dialog-add span#select-type {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -359,10 +360,10 @@
           background: var(--color-surface-3);
           color: var(--color-foreground);
         }
-      }
+      }*/
 
       .related-select {
-        padding-block: 0.25rem;
+        /* padding-block: 0.25rem;
         padding-inline: 0.5rem;
         border-radius: 0.5rem;
         background: var(--color-surface-2);
@@ -371,11 +372,11 @@
         cursor: pointer;
         &:hover {
           background: var(--color-surface-3);
-        }
+        }*/
       }
 
       .title {
-        & label {
+        /*  & label {
           font-size: 0.75rem;
         }
         & input {
@@ -390,7 +391,7 @@
           &:focus-visible {
             outline: none;
           }
-        }
+        }*/
       }
 
       .hidden {
@@ -398,7 +399,7 @@
       }
 
       .dialog-footer {
-        display: flex;
+        /* display: flex;
         justify-content: center;
         gap: 0.5rem;
         & > button {
@@ -413,11 +414,11 @@
           &:hover {
             background: var(--color-surface-3);
           }
-        }
+        }*/
       }
 
       #dialog-related {
-        left: auto;
+        /*  left: auto;
         right: 15rem;
         top: auto;
         bottom: 0.5rem;
@@ -427,11 +428,11 @@
         background-color: var(--color-surface-1);
         border: none;
         color: var(--color-foreground);
-        padding: 0.25rem;
+        padding: 0.25rem;*/
       }
 
       .related-list {
-        list-style: none;
+        /* list-style: none;
         overflow-y: auto;
         & > li {
           margin-block: 0.5rem;
@@ -458,62 +459,11 @@
             font-weight: 700;
             color: var(--color-foreground-secondary);
           }
-        }
-      }
-
-      .active {
-        background-color: var(--color-foreground-secondary);
-      }
-
-      .game-filter {
-        margin: auto;
-      }
-
-      .dialog-confirm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        width: 2.3rem;
-        height: 2.5rem;
-        border: none;
-        background: color-mix(var(--color-surface-3), #030122);
-        border-radius: 0 1rem 1rem 0;
-        overflow: inherit;
-        position: absolute;
-
-        & > .icon {
-          width: 1.5rem;
-        }
-      }
-
-      .dialog-confirm::after {
-        content: "";
-        position: absolute;
-        width: 15px;
-        height: 12px;
-        border-bottom-left-radius: 16px;
-        background: transparent;
-        box-shadow: -4px 4px 0 0 #141338;
-        top: -12px;
-        left: -3px;
-      }
-
-      .dialog-confirm::before {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 18px;
-        border-top-left-radius: 20px;
-        background: transparent;
-        box-shadow: -4px -4px 0 0 color-mix(var(--color-surface-3), #030122);
-        top: 71px;
-        left: 1px;
+        }*/
       }
 
       #content-task {
-        display: grid;
+    /*    display: grid;
         width: 100%;
         grid-template-columns: 2rem 1fr;
         background: var(--color-surface-2);
@@ -560,7 +510,7 @@
           font-size: 0.75rem;
           padding: 0.5rem;
           color: var(--accent-high-contrast);
-        }
+        }*/
       }
 
       .item-work:nth-child(2n + 1) {
@@ -568,7 +518,7 @@
       }
 
       .navigator {
-        color: var(--color-foreground);
+        /*color: var(--color-foreground);
         height: 4rem;
         display: flex;
         justify-content: space-between;
@@ -585,7 +535,7 @@
 
         & h3 {
           font-size: 1.5rem;
-        }
+        }*/
       }
 
       .section-workspace {
@@ -660,6 +610,17 @@
             color: var(--color-foreground-secondary-hover);
           }
         }
+      }
+
+      .btn-jump {
+        /* display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.5rem;
+        margin-inline: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: var(--color-surface-2);
+        color: var(--color-foreground);*/
       }
     </style>
   </head>
@@ -775,8 +736,7 @@
                 id="endfield"
                 value="endfield"
               />
-              <label for="endfield">Arcknight Endfield</label
-              >
+              <label for="endfield">Arcknight Endfield</label>
               <small>8</small>
             </li>
             <li>
@@ -1020,137 +980,158 @@
         <dialog id="dialog" class="dialog-add" popover>
           <h3>New Task</h3>
           <section>
-            <input type="date" name="day" id="day" />
-            <span>
+            <input
+              type="date"
+              name="day"
+              id="day"
+              min="2026-10-19"
+              max="2026-10-25"
+            />
+            <span class="flex flex-col">
               <label for="from">Desde</label>
               <input type="time" name="from" id="from" step="1200" />
             </span>
-            <span>
+            <span class="flex flex-col">
               <label for="to">Hasta</label>
               <input type="time" name="to" id="to" step="1200" />
             </span>
 
-            <span id="select-type">
-              <input type="radio" name="type" id="type" value="Event" />
-              <label for="type">Event</label>
-
-              <input type="radio" name="type" id="type2" value="Task" />
-              <label for="type2">Task</label>
-
-              <input type="radio" name="type" id="type4" value="no" checked />
-              <label for="type4">No related</label>
+            <span id="select-type" class="flex flex-wrap flex-col gap-1">
+              <div class="w-full">
+                <input
+                  class="hidden peer"
+                  type="radio"
+                  name="type"
+                  id="type"
+                  value="Event"
+                />
+                <label
+                  class="py-1 px-2 rounded-lg cursor-pointer hover:bg-[--color-surface-3] peer-checked:bg-[--color-surface-3] peer-checked:text-[--color-foreground] block"
+                  for="type"
+                  >Event</label
+                >
+              </div>
+              <div class="w-full">
+                <input
+                  class="hidden peer"
+                  type="radio"
+                  name="type"
+                  id="type2"
+                  value="Task"
+                />
+                <label
+                  class="py-1 px-2 rounded-lg cursor-pointer hover:bg-[--color-surface-3] peer-checked:bg-[--color-surface-3] peer-checked:text-[--color-foreground] block"
+                  for="type2"
+                  >Task</label
+                >
+              </div>
+              <div class="w-full">
+                <input
+                  class="hidden peer"
+                  type="radio"
+                  name="type"
+                  id="type4"
+                  value="no"
+                  checked
+                />
+                <label
+                  class="py-1 px-2 rounded-lg cursor-pointer hover:bg-[--color-surface-3] peer-checked:bg-[--color-surface-3] peer-checked:text-[--color-foreground] block"
+                  for="type4"
+                  >No related</label
+                >
+              </div>
             </span>
             <span class="hidden">
               <button
                 popovertarget="dialog-related"
-                class="related-select"
+                class="px-2 py-1 rounded-lg bg-[--color-surface-3] color-[--color-foreground] border-none cursor-pointer hover:bg-[--color-surface-3] w-full"
                 id="select-related"
               >
                 Select Related
               </button>
-              <dialog id="dialog-related" popover>
-                <ul class="related-list">
-                  <li data-title="this is a title" data-game="zzz">
-                    <span>
+              <dialog
+                id="dialog-related"
+                class="left-auto right-60 top-[17rem] bottom-auto max-h-[25.5rem] w-[13.5rem] rounded-2xl bg-[--color-surface-1] border-none text-[--color-foreground] p-1"
+                popover
+              >
+                <ul class="related-list list-none overflow-auto">
+                  <li
+                    class="my-2 p-2 rounded-lg bg-[--color-surface-2] cursor-pointer hover:bg-[--color-surface-3]"
+                    data-title="this is a title"
+                    data-game="zzz"
+                  >
+                    <span
+                      class="flex flex-row text-xs font-bold text-[--color-foreground-secondary]"
+                    >
                       <p>ZZZ</p>
                       <p>20day remaining</p>
                     </span>
                     <p>This is a title</p>
                   </li>
-                  <li data-title="this is a title large" data-game="endfield">
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a large title very larger</p>
-                  </li>
-                  <li data-title="this is a title very very" data-game="wuwa">
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>This is a larger title very very very larger</p>
-                  </li>
-                  <li>
-                    <span>
-                      <p>ZZZ</p>
-                      <p>20day remaining</p>
-                    </span>
-                    <p>
-                      This is a larger title very very very very very very
-                      larger
-                    </p>
-                  </li>
                 </ul>
               </dialog>
             </span>
             <div class="title">
-              <label for="title-task">Title</label>
-              <input type="text" id="title-task" />
+              <label class="text-xs" for="title-task">Title</label>
+              <input
+                class="px-2 py-1 rounded-lg bg-[--color-surface-3] color-[--color-foreground] border-none w-full focus-visible:outline-none text-sm"
+                type="text"
+                id="title-task"
+              />
             </div>
           </section>
           <!-- El botón con method="dialog" cierra la ventana automáticamente -->
-          <footer class="dialog-footer">
-            <button popovertarget="dialog" popovertargetaction="hide">
+          <footer class="flex justify-center gap-2">
+            <button
+              class="py-1 px-2 rounded-lg bg-[--color-surface-2] text-[--color-foreground] border-none cursor-pointer hover:bg-[--color-surface-3]"
+              popovertarget="dialog"
+              popovertargetaction="hide"
+            >
               Cancel
             </button>
-            <button id="confirm">Confirm</button>
+            <button
+              class="py-1 px-2 rounded-lg bg-[--color-surface-2] text-[--color-foreground] border-none cursor-pointer hover:bg-[--color-surface-3]"
+              id="confirm"
+            >
+              Confirm
+            </button>
           </footer>
         </dialog>
-        <dialog id="items">
-          <!--
-          Tabs Events
-          Tabs Task
-            On proceess Task
-            Pocket Task
-         -->
-        </dialog>
-        <div class="navigator">
-          <span>
-            <h3>Today</h3>
-            <h4>14-October</h4>
+        <div
+          class="text-[--color-foreground] h-16 flex items-center justify-between"
+        >
+          <span class="flex gap-1 items-end">
+            <h3 class="text-[--color-foreground] text-2xl leading-none">Today</h3>
+            <h4 class="text-[--color-foreground-secondary] leading-none">14-October</h4>
+            <button
+              class="btn-jump inline-flex gap-2 items-center py-1 px-2 mx-4 border-none rounded-lg bg-[--color-surface-3] hover:bg-[--color-surface-2] text-[--color-foreground]"
+            >
+              <svg
+               
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"
+                />
+                <path d="M16 3v4" />
+                <path
+                  d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879"
+                />
+                <path d="M19 18v.01" />
+                <path d="M8 3v4" />
+                <path d="M4 11h16" />
+              </svg>
+              Jump to Now
+            </button>
           </span>
           <button popovertarget="dialog" class="btn-add-modal" id="new-task">
             <svg
@@ -1172,17 +1153,19 @@
             Create New
           </button>
         </div>
-        <div class="wrapper">
+        <div
+          class="overflow-auto h-screen w-full relative [scrollbar-width:thin] [scrollbar-color: #b6b5b5f7 transparent] scroll-smooth wrapper"
+        >
           <section class="workspace">
             <div></div>
             <div class="days">
-              <h4>Lunes<small>16</small></h4>
-              <h4>Martes <small>17</small></h4>
-              <h4>Miercoles</h4>
-              <h4>Jueves</h4>
-              <h4>Viernes</h4>
-              <h4>Sabado</h4>
-              <h4>Domingo</h4>
+              <h4 class="font-bold leading-none ">Lunes<small>16</small></h4>
+              <h4 class="font-bold leading-none ">Martes <small>17</small></h4>
+              <h4 class="font-bold leading-none ">Miercoles<small>18</small></h4>
+              <h4 class="font-bold leading-none ">Jueves<small>19</small></h4>
+              <h4 class="font-bold leading-none ">Viernes<small>20</small></h4>
+              <h4 class="font-bold leading-none ">Sabado<small>21</small></h4>
+              <h4 class="font-bold leading-none ">Domingo<small>22</small></h4>
             </div>
             <div class="hours">
               <h4>1:00</h4>
@@ -1213,63 +1196,116 @@
             <div class="cells-background"></div>
             <template id="item-work-template">
               <div
-                id="item-work"
-                style="grid-column: 2; grid-row: 2 / span 1"
-                class="item-work"
+                style="grid-column: 4; grid-row: 4 / span 4"
+                class="w-[calc(100%-1rem)] h-[calc(100%-1rem)] place-self-center bg-[color-mix(in_srgb,var(--color-surface-3),65%#030122)] text-[--color-foreground] p-1 rounded-[1.25rem] relative z-0 overflow-clip item-work"
               >
-                <article id="content-task">
-                  <div class="icon"></div>
-                  <header id="task-header">
-                    <h4>Wuwa Event</h4>
-                    <small>10 - 11</small>
+                <article
+                  class="sticky top-16 grid w-full grid-cols-[2rem_1fr] bg-[--color-surface-2] items-center p-1 rounded-2xl gap-y-1"
+                >
+                  <div class="icon w-7 bg-[--color-foreground]"></div>
+                  <header
+                    id="task-header"
+                    class="grid grid-cols-subgrid col-start-2 -col-end-1"
+                  >
+                    <h4 class="inline-block">Wuwa Event</h4>
+                    <span class="flex justify-between pr-2">
+                      <small
+                        class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)] time"
+                        >10 - 11</small
+                      >
+                      <small
+                        class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)] type-event"
+                        >Events</small
+                      >
+                    </span>
                   </header>
-                  <section id="task-section">
+                  <section
+                    id="task-section"
+                    class="row-[2/span_2] w-full h-28 col-[1/span_2]"
+                  >
                     <img
+                      class="w-full h-full rounded-xl"
                       src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
                       alt=""
                     />
                   </section>
-                  <footer id="task-footer">3 days remaining</footer>
+                  <footer
+                    id="task-footer"
+                    class="row-start-3 col-start-2 justify-self-end text-xs p-2 text-[--accent-high-contrast]"
+                  >
+                    3 days remaining
+                  </footer>
                 </article>
               </div>
             </template>
             <div
               id="item-work"
-              style="grid-column: 3; grid-row: 4 / span 1"
-              class="item-work"
+              style="grid-column: 4; grid-row: 4 / span 4"
+              class="w-[calc(100%-1rem)] h-[calc(100%-1rem)] place-self-center bg-[color-mix(in_srgb,var(--color-surface-3),65%#030122)] text-[--color-foreground] p-1 rounded-[1.25rem] relative z-0 overflow-clip"
             >
-              <article id="content-task">
-                <div class="icon"></div>
-                <header id="task-header">
-                  <h4>Wuwa Event</h4>
-                  <span>
-                    <small>10 - 11</small>
-                    <small>Events</small>
+              <article
+                class="sticky top-16 grid w-full grid-cols-[2rem_1fr] bg-[--color-surface-2] items-center p-1 rounded-2xl gap-y-1"
+              >
+                <div class="icon w-7 bg-[--color-foreground]"></div>
+                <header
+                  id="task-header"
+                  class="grid grid-cols-subgrid col-start-2 -col-end-1"
+                >
+                  <h4 class="inline-block">Wuwa Event</h4>
+                  <span class="flex justify-between pr-2">
+                    <small
+                      class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)]"
+                      >10 - 11</small
+                    >
+                    <small
+                      class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)]"
+                      >Events</small
+                    >
                   </span>
                 </header>
+                <section
+                  id="task-section"
+                  class="row-[2/span_2] w-full h-28 col-[1/span_2]"
+                >
+                  <img
+                    class="w-full h-full rounded-xl"
+                    src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
+                    alt=""
+                  />
+                </section>
+                <footer
+                  id="task-footer"
+                  class="row-start-3 col-start-2 justify-self-end text-xs p-2 text-[--accent-high-contrast]"
+                >
+                  3 days remaining
+                </footer>
               </article>
             </div>
             <div
               id="item-work"
               style="grid-column: 3; grid-row: 5 / span 5"
-              class="item-work"
+              class="w-[calc(100%-1rem)] h-[calc(100%-1rem)] place-self-center bg-[color-mix(in_srgb,var(--color-surface-3),65%#030122)] text-[--color-foreground] p-1 rounded-[1.25rem] relative z-0 overflow-clip"
             >
-              <article id="content-task">
-                <div class="icon"></div>
-                <header id="task-header">
-                  <h4>Wuwa Event</h4>
-                  <span>
-                    <small>10 - 11</small>
-                    <small>Events</small>
+              <article
+                class="sticky top-16 grid w-full grid-cols-[2rem_1fr] bg-[--color-surface-2] items-center p-1 rounded-2xl gap-y-1"
+              >
+                <div class="icon w-7 bg-[--color-foreground]"></div>
+                <header
+                  id="task-header"
+                  class="grid grid-cols-subgrid col-start-2 -col-end-1"
+                >
+                  <h4 class="inline-block">Wuwa Event</h4>
+                  <span class="flex justify-between pr-2">
+                    <small
+                      class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)]"
+                      >10 - 11</small
+                    >
+                    <small
+                      class="text-xs text-[color-mix(in_srgb,var(--color-foreground-secondary),transparent)]"
+                      >Events</small
+                    >
                   </span>
                 </header>
-                <section id="task-section">
-                  <img
-                    src="https://i.fbcd.co/products/resized/resized-750-500/563d0201e4359c2e890569e254ea14790eb370b71d08b6de5052511cc0352313.webp"
-                    alt=""
-                  />
-                </section>
-                <footer id="task-footer">3 days remaining</footer>
               </article>
             </div>
             <div
@@ -1323,13 +1359,92 @@
     const workspace = document.querySelector(".workspace");
     const dialog_confirm = document.querySelector("#dialog-confirm");
 
+    const now = Temporal.Now.plainDateTimeISO();
+
+    day.value = `${now.year}-${now.month}-${now.day}`;
+    from.value = `${now.hour}:${now.minute}`;
+
+  
+
+    function firts_last_day_week() {
+      let until_days = now.dayOfWeek - 1;
+      let day_min = until_days === 0 ? now : now.subtract({ days: until_days });
+
+      let day_max = now.dayOfWeek === 7 ? now : day_min.add({ days: 6 });
+
+      return [day_min, day_max];
+    }
+
+
+    
+    // Usamos load en lugar de DOMContentLoaded para garantizar que el CSS ya cargó
+    window.addEventListener("DOMContentLoaded", () => {
+      let [day_min, day_max] = firts_last_day_week();
+
+      day.min = `${day_min.year}-${day_min.month}-${day_min.day}`;
+      day.max = `${day_max.year}-${day_max.month}-${day_max.day}`;
+
+      const contenedor = document.querySelector(".wrapper");
+
+      requestAnimationFrame(() => {
+        const estilosContenedor = window.getComputedStyle(contenedor);
+        const estilosRoot = window.getComputedStyle(document.documentElement);
+
+        const altoFilaRem = estilosContenedor
+          .getPropertyValue("--cell-row")
+          .trim();
+        const anchoColumnaRem = estilosContenedor
+          .getPropertyValue("--cell-column")
+          .trim();
+
+        const altoFilaPx = parseFloat(altoFilaRem) * 16;
+        const anchoColumnaPx = parseFloat(anchoColumnaRem) * 16;
+
+        const date = Temporal.Now.plainDateTimeISO();
+
+        const filaDestino = (date.hour * 60) / 20 - 4;
+        const columnaDestino = date.dayOfWeek - 1;
+
+        contenedor.scrollTo({
+          top: filaDestino * altoFilaPx,
+          left: columnaDestino * anchoColumnaPx,
+          behavior: "auto",
+        });
+      });
+    });
+
     let last_element,
       last_type_task = "no";
+
+    document.querySelector(".btn-jump").addEventListener("click", () => {
+      const contenedor = document.querySelector(".wrapper");
+      const estilosContenedor = window.getComputedStyle(contenedor);
+      const estilosRoot = window.getComputedStyle(document.documentElement);
+
+      const altoFilaRem = estilosContenedor
+        .getPropertyValue("--cell-row")
+        .trim();
+      const anchoColumnaRem = estilosContenedor
+        .getPropertyValue("--cell-column")
+        .trim();
+
+      const altoFilaPx = parseFloat(altoFilaRem) * 16;
+      const anchoColumnaPx = parseFloat(anchoColumnaRem) * 16;
+      const now = Temporal.Now.plainDateTimeISO();
+      const filaDestino = (now.hour * 60) / 20 - 4;
+      const columnaDestino = now.dayOfWeek - 1;
+
+      contenedor.scrollTo({
+        top: filaDestino * altoFilaPx,
+        left: columnaDestino * anchoColumnaPx,
+        behavior: "auto",
+      });
+    });
 
     select_type.addEventListener("click", () => {
       if (event.target.tagName !== "INPUT") return;
 
-      let input_t = document.querySelector("input:checked");
+      let input_t = document.querySelector("input[name=type]:checked");
 
       if (last_type_task == input_t.value) return;
 
@@ -1337,13 +1452,11 @@
       input_title.value = "";
 
       if (input_t?.value === "no") {
-        tittle.style.display = "block";
-        console.log("no");
+        tittle.classList.remove("hidden");
       }
 
       if (input_t?.value !== "no") {
-        tittle.style.display = "none";
-        console.log("no no");
+        tittle.classList.add("hidden")
         return related_button.parentElement.classList.remove("hidden");
       }
 
@@ -1354,23 +1467,6 @@
     });
 
     related_container.addEventListener("click", (e) => {
-      let element = e.target.closest("li");
-
-      if (element?.nodeName !== "LI") return;
-
-      let { title, game } = element.dataset;
-      input_title.value = title ?? "not found";
-
-      let game_active = document.querySelector(
-        `div[data-game=${game}].game-filter-icon`,
-      );
-
-      if (last_element == game_active) return;
-
-      game_active?.classList.add("active");
-      last_element?.classList.remove("active");
-      last_element = game_active;
-      related_container.hidePopover();
     });
 
     const min20 = (e) => {
@@ -1385,35 +1481,35 @@
         minutosRedondeados = 0;
         horas += 1;
       }
+
       if (horas === 24) {
         horas = 0;
       }
+
       const horasFormateadas = String(horas).padStart(2, "0");
       const minutosFormateados = String(minutosRedondeados).padStart(2, "0");
+
       input.value = `${horasFormateadas}:${minutosFormateados}`;
     };
 
     from.addEventListener("change", (e) => {
       min20(e);
-      to.value = from.value;
+      let [horas, minutos] = from.value.split(":").map(Number);
+      const horasFormateadas = String(horas + 1).padStart(2, "0");
+      const minutosFormateados = String(minutos).padStart(2, "0");
+      to.value = `${horasFormateadas}:${minutosFormateados}`;
     });
 
     to.addEventListener("change", (e) => {
       min20(e);
     });
 
+    const event = new Event("change", { bubbles: true });
+    from.dispatchEvent(event);
+
+
     confirm.addEventListener("click", () => {
-      const clone = document.importNode(template.content, true);
-
-      const container = clone.querySelector("div.item-work");
-      const section = clone.querySelector("section");
-      const footer = clone.querySelector("footer");
-      const time_p = clone.querySelector("#time");
-      const title_p = clone.querySelector("#title");
-      const header = clone.querySelector("header");
-
-      let now = Temporal.Now.plainDateISO();
-      let position_x = now.until(Temporal.PlainDate.from(day.value)).days + 2;
+      let position_x = Temporal.PlainDate.from(day.value).dayOfWeek + 1;
 
       let first_date = Temporal.PlainTime.from(from.value);
       let diff = first_date.until(Temporal.PlainTime.from(to.value));
@@ -1421,6 +1517,20 @@
       let span = (diff.minutes + diff.hours * 60) / 20;
 
       let row = ((first_date.minute ?? 0) + first_date.hour * 60) / 20;
+
+      let valid = validate(position_x, row - 1, row - 1 + span);
+
+      if (!valid) return;
+
+      const clone = document.importNode(template.content, true);
+
+      const container = clone.querySelector("div.item-work");
+      const img = clone.querySelector("section > img");
+      const footer = clone.querySelector("footer");
+      const time_p = clone.querySelector('small.time');
+      const type_task = clone.querySelector('small.type-event');
+      const title_p = clone.querySelector("header > h4");
+      const header = clone.querySelector("header");
 
       container.style.gridColumnStart = position_x;
       container.style.gridRowStart = row - 1;
@@ -1430,24 +1540,17 @@
       container.dataset.y2 = row - 1 + span;
       time_p.innerHTML = `${from.value} - ${to.value}`;
 
-      if (last_type_task === "no") {
-        title_p.innerHTML = input_title.value;
-        section.style.display = "none";
-        footer.style.display = "none";
-      }
+      title_p.innerHTML = input_title.value;
+      type_task.innerHTML = "Free";
 
-      if (last_type_task !== "no") {
-        title_p.innerHTML = last_type_task;
-        section.innerHTML = input_title.value;
+      if (last_type_task == "event") {
+        img.src = "#";
         footer.innerHTML = "12 days remaining";
-        header.classList.remove("one-cell");
       }
-
-      let valid = validate(position_x, row - 1, row - 1 + span);
-
-      if (!valid) return;
 
       workspace.appendChild(clone);
+      from.value = to.value;
+      from.dispatchEvent(event);
     });
 
     function validate(x, y1, y2) {
